@@ -1,0 +1,21 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "linterOptions": {
+        "exclude": [
+            "node_modules/**",
+            "src/generated/**",
+            "database",
+            "src/schema.graphql"
+        ]
+    },
+    "jsRules": {},
+    "rules": {
+        "interface-name": false,
+        "object-literal-sort-keys": false,
+        "no-console": false
+    },
+    "rulesDirectory": []
+}

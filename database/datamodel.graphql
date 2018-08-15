@@ -1,0 +1,61 @@
+type Post {
+  id: ID! @unique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  isPublished: Boolean! @default(value: "false")
+  title: String!
+  text: String!
+  author: User!
+}
+
+type User {
+  id: ID! @unique
+  email: String! @unique
+  password: String!
+  name: String!
+  posts: [Post!]!
+  balance: Balance
+}
+
+type CurrentBalance {
+  id: ID! @unique
+  count: Float! @default(value: "0")
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type TotalBalance {
+  id: ID! @unique
+  count: Float! @default(value: "0")
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Earning {
+  id: ID! @unique
+  description: String!
+  note: String!
+  count: Float! 
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Expense {
+  id: ID! @unique
+  description: String!
+  note: String!
+  count: Float!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Balance {
+  id: ID! @unique
+  current: CurrentBalance! 
+  total: TotalBalance!
+  earnings: [Earning!]!
+  outgoings: [Expense!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  owner: User!
+}

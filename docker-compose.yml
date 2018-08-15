@@ -1,0 +1,58 @@
+version: '3'
+services:
+  # web:
+  #   build: .
+  #   container_name: indebt
+  #   command: sh -c 'yarn start'
+  #   volumes:
+  #     - .:/usr/app/
+  #     - /usr/app/node_modules
+  #   ports:
+  #     - '4000:4000'
+  #     - '3000:3000'
+  #   depends_on:
+  #     - prisma
+  #     - postgres
+  #   environment:
+  #     PRISMA_ENDPOINT: http://prisma:4466
+  #     PRISMA_SECRET: QGX1scx%A0A2QV7G>KnUd1ioa>jZiu
+  #     APP_SECRET: QGX1scx%A0A2QV7G>KnUd1ioa>jZiu
+  #   networks: 
+  #     - indebt-network
+  prisma:
+    image: prismagraphql/prisma:1.13
+    container_name: prisma
+    restart: always
+    ports:
+    - "4466:4466"
+    environment:
+      PRISMA_CONFIG: |
+        port: 4466
+        # uncomment the next line and provide the env var PRISMA_MANAGEMENT_API_SECRET=my-secret to activate cluster security
+        # managementApiSecret: my-secret
+        databases:
+          default:
+            connector: postgres
+            host: postgres
+            port: 5432
+            user: prisma
+            password: prisma
+            migrations: true
+    networks: 
+      - indebt-network
+  postgres:
+    image: postgres
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: prisma
+      POSTGRES_PASSWORD: prisma
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks: 
+      - indebt-network
+volumes:
+  postgres:
+
+networks:
+  indebt-network:

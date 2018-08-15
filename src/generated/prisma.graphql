@@ -1,0 +1,2210 @@
+# source: http://localhost:4466
+# timestamp: Tue Aug 14 2018 11:29:22 GMT+0200 (CEST)
+
+type AggregateBalance {
+  count: Int!
+}
+
+type AggregateCurrentBalance {
+  count: Int!
+}
+
+type AggregateEarning {
+  count: Int!
+}
+
+type AggregateExpense {
+  count: Int!
+}
+
+type AggregatePost {
+  count: Int!
+}
+
+type AggregateTotalBalance {
+  count: Int!
+}
+
+type AggregateUser {
+  count: Int!
+}
+
+type Balance implements Node {
+  id: ID!
+  current(where: CurrentBalanceWhereInput): CurrentBalance!
+  total(where: TotalBalanceWhereInput): TotalBalance!
+  earnings(where: EarningWhereInput, orderBy: EarningOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Earning!]
+  outgoings(where: ExpenseWhereInput, orderBy: ExpenseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Expense!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  owner(where: UserWhereInput): User!
+}
+
+"""A connection to a list of items."""
+type BalanceConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [BalanceEdge]!
+  aggregate: AggregateBalance!
+}
+
+input BalanceCreateInput {
+  current: CurrentBalanceCreateOneInput!
+  total: TotalBalanceCreateOneInput!
+  earnings: EarningCreateManyInput
+  outgoings: ExpenseCreateManyInput
+  owner: UserCreateOneWithoutBalanceInput!
+}
+
+input BalanceCreateOneWithoutOwnerInput {
+  create: BalanceCreateWithoutOwnerInput
+  connect: BalanceWhereUniqueInput
+}
+
+input BalanceCreateWithoutOwnerInput {
+  current: CurrentBalanceCreateOneInput!
+  total: TotalBalanceCreateOneInput!
+  earnings: EarningCreateManyInput
+  outgoings: ExpenseCreateManyInput
+}
+
+"""An edge in a connection."""
+type BalanceEdge {
+  """The item at the end of the edge."""
+  node: Balance!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum BalanceOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type BalancePreviousValues {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type BalanceSubscriptionPayload {
+  mutation: MutationType!
+  node: Balance
+  updatedFields: [String!]
+  previousValues: BalancePreviousValues
+}
+
+input BalanceSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BalanceSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BalanceSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BalanceSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: BalanceWhereInput
+}
+
+input BalanceUpdateInput {
+  current: CurrentBalanceUpdateOneInput
+  total: TotalBalanceUpdateOneInput
+  earnings: EarningUpdateManyInput
+  outgoings: ExpenseUpdateManyInput
+  owner: UserUpdateOneWithoutBalanceInput
+}
+
+input BalanceUpdateOneWithoutOwnerInput {
+  create: BalanceCreateWithoutOwnerInput
+  connect: BalanceWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: BalanceUpdateWithoutOwnerDataInput
+  upsert: BalanceUpsertWithoutOwnerInput
+}
+
+input BalanceUpdateWithoutOwnerDataInput {
+  current: CurrentBalanceUpdateOneInput
+  total: TotalBalanceUpdateOneInput
+  earnings: EarningUpdateManyInput
+  outgoings: ExpenseUpdateManyInput
+}
+
+input BalanceUpsertWithoutOwnerInput {
+  update: BalanceUpdateWithoutOwnerDataInput!
+  create: BalanceCreateWithoutOwnerInput!
+}
+
+input BalanceWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BalanceWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BalanceWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BalanceWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+  current: CurrentBalanceWhereInput
+  total: TotalBalanceWhereInput
+  earnings_every: EarningWhereInput
+  earnings_some: EarningWhereInput
+  earnings_none: EarningWhereInput
+  outgoings_every: ExpenseWhereInput
+  outgoings_some: ExpenseWhereInput
+  outgoings_none: ExpenseWhereInput
+  owner: UserWhereInput
+}
+
+input BalanceWhereUniqueInput {
+  id: ID
+}
+
+type BatchPayload {
+  """The number of nodes that have been affected by the Batch operation."""
+  count: Long!
+}
+
+type CurrentBalance implements Node {
+  id: ID!
+  count: Float!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""A connection to a list of items."""
+type CurrentBalanceConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [CurrentBalanceEdge]!
+  aggregate: AggregateCurrentBalance!
+}
+
+input CurrentBalanceCreateInput {
+  count: Float
+}
+
+input CurrentBalanceCreateOneInput {
+  create: CurrentBalanceCreateInput
+  connect: CurrentBalanceWhereUniqueInput
+}
+
+"""An edge in a connection."""
+type CurrentBalanceEdge {
+  """The item at the end of the edge."""
+  node: CurrentBalance!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum CurrentBalanceOrderByInput {
+  id_ASC
+  id_DESC
+  count_ASC
+  count_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type CurrentBalancePreviousValues {
+  id: ID!
+  count: Float!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type CurrentBalanceSubscriptionPayload {
+  mutation: MutationType!
+  node: CurrentBalance
+  updatedFields: [String!]
+  previousValues: CurrentBalancePreviousValues
+}
+
+input CurrentBalanceSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [CurrentBalanceSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [CurrentBalanceSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [CurrentBalanceSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: CurrentBalanceWhereInput
+}
+
+input CurrentBalanceUpdateDataInput {
+  count: Float
+}
+
+input CurrentBalanceUpdateInput {
+  count: Float
+}
+
+input CurrentBalanceUpdateOneInput {
+  create: CurrentBalanceCreateInput
+  connect: CurrentBalanceWhereUniqueInput
+  delete: Boolean
+  update: CurrentBalanceUpdateDataInput
+  upsert: CurrentBalanceUpsertNestedInput
+}
+
+input CurrentBalanceUpsertNestedInput {
+  update: CurrentBalanceUpdateDataInput!
+  create: CurrentBalanceCreateInput!
+}
+
+input CurrentBalanceWhereInput {
+  """Logical AND on all given filters."""
+  AND: [CurrentBalanceWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [CurrentBalanceWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [CurrentBalanceWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  count: Float
+
+  """All values that are not equal to given value."""
+  count_not: Float
+
+  """All values that are contained in given list."""
+  count_in: [Float!]
+
+  """All values that are not contained in given list."""
+  count_not_in: [Float!]
+
+  """All values less than the given value."""
+  count_lt: Float
+
+  """All values less than or equal the given value."""
+  count_lte: Float
+
+  """All values greater than the given value."""
+  count_gt: Float
+
+  """All values greater than or equal the given value."""
+  count_gte: Float
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+}
+
+input CurrentBalanceWhereUniqueInput {
+  id: ID
+}
+
+scalar DateTime
+
+type Earning implements Node {
+  id: ID!
+  description: String!
+  note: String!
+  count: Float!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""A connection to a list of items."""
+type EarningConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [EarningEdge]!
+  aggregate: AggregateEarning!
+}
+
+input EarningCreateInput {
+  description: String!
+  note: String!
+  count: Float!
+}
+
+input EarningCreateManyInput {
+  create: [EarningCreateInput!]
+  connect: [EarningWhereUniqueInput!]
+}
+
+"""An edge in a connection."""
+type EarningEdge {
+  """The item at the end of the edge."""
+  node: Earning!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum EarningOrderByInput {
+  id_ASC
+  id_DESC
+  description_ASC
+  description_DESC
+  note_ASC
+  note_DESC
+  count_ASC
+  count_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type EarningPreviousValues {
+  id: ID!
+  description: String!
+  note: String!
+  count: Float!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type EarningSubscriptionPayload {
+  mutation: MutationType!
+  node: Earning
+  updatedFields: [String!]
+  previousValues: EarningPreviousValues
+}
+
+input EarningSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [EarningSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [EarningSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [EarningSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: EarningWhereInput
+}
+
+input EarningUpdateDataInput {
+  description: String
+  note: String
+  count: Float
+}
+
+input EarningUpdateInput {
+  description: String
+  note: String
+  count: Float
+}
+
+input EarningUpdateManyInput {
+  create: [EarningCreateInput!]
+  connect: [EarningWhereUniqueInput!]
+  disconnect: [EarningWhereUniqueInput!]
+  delete: [EarningWhereUniqueInput!]
+  update: [EarningUpdateWithWhereUniqueNestedInput!]
+  upsert: [EarningUpsertWithWhereUniqueNestedInput!]
+}
+
+input EarningUpdateWithWhereUniqueNestedInput {
+  where: EarningWhereUniqueInput!
+  data: EarningUpdateDataInput!
+}
+
+input EarningUpsertWithWhereUniqueNestedInput {
+  where: EarningWhereUniqueInput!
+  update: EarningUpdateDataInput!
+  create: EarningCreateInput!
+}
+
+input EarningWhereInput {
+  """Logical AND on all given filters."""
+  AND: [EarningWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [EarningWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [EarningWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values less than the given value."""
+  description_lt: String
+
+  """All values less than or equal the given value."""
+  description_lte: String
+
+  """All values greater than the given value."""
+  description_gt: String
+
+  """All values greater than or equal the given value."""
+  description_gte: String
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string."""
+  description_not_ends_with: String
+  note: String
+
+  """All values that are not equal to given value."""
+  note_not: String
+
+  """All values that are contained in given list."""
+  note_in: [String!]
+
+  """All values that are not contained in given list."""
+  note_not_in: [String!]
+
+  """All values less than the given value."""
+  note_lt: String
+
+  """All values less than or equal the given value."""
+  note_lte: String
+
+  """All values greater than the given value."""
+  note_gt: String
+
+  """All values greater than or equal the given value."""
+  note_gte: String
+
+  """All values containing the given string."""
+  note_contains: String
+
+  """All values not containing the given string."""
+  note_not_contains: String
+
+  """All values starting with the given string."""
+  note_starts_with: String
+
+  """All values not starting with the given string."""
+  note_not_starts_with: String
+
+  """All values ending with the given string."""
+  note_ends_with: String
+
+  """All values not ending with the given string."""
+  note_not_ends_with: String
+  count: Float
+
+  """All values that are not equal to given value."""
+  count_not: Float
+
+  """All values that are contained in given list."""
+  count_in: [Float!]
+
+  """All values that are not contained in given list."""
+  count_not_in: [Float!]
+
+  """All values less than the given value."""
+  count_lt: Float
+
+  """All values less than or equal the given value."""
+  count_lte: Float
+
+  """All values greater than the given value."""
+  count_gt: Float
+
+  """All values greater than or equal the given value."""
+  count_gte: Float
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+}
+
+input EarningWhereUniqueInput {
+  id: ID
+}
+
+type Expense implements Node {
+  id: ID!
+  description: String!
+  note: String!
+  count: Float!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""A connection to a list of items."""
+type ExpenseConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [ExpenseEdge]!
+  aggregate: AggregateExpense!
+}
+
+input ExpenseCreateInput {
+  description: String!
+  note: String!
+  count: Float!
+}
+
+input ExpenseCreateManyInput {
+  create: [ExpenseCreateInput!]
+  connect: [ExpenseWhereUniqueInput!]
+}
+
+"""An edge in a connection."""
+type ExpenseEdge {
+  """The item at the end of the edge."""
+  node: Expense!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum ExpenseOrderByInput {
+  id_ASC
+  id_DESC
+  description_ASC
+  description_DESC
+  note_ASC
+  note_DESC
+  count_ASC
+  count_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type ExpensePreviousValues {
+  id: ID!
+  description: String!
+  note: String!
+  count: Float!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type ExpenseSubscriptionPayload {
+  mutation: MutationType!
+  node: Expense
+  updatedFields: [String!]
+  previousValues: ExpensePreviousValues
+}
+
+input ExpenseSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ExpenseSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ExpenseSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ExpenseSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: ExpenseWhereInput
+}
+
+input ExpenseUpdateDataInput {
+  description: String
+  note: String
+  count: Float
+}
+
+input ExpenseUpdateInput {
+  description: String
+  note: String
+  count: Float
+}
+
+input ExpenseUpdateManyInput {
+  create: [ExpenseCreateInput!]
+  connect: [ExpenseWhereUniqueInput!]
+  disconnect: [ExpenseWhereUniqueInput!]
+  delete: [ExpenseWhereUniqueInput!]
+  update: [ExpenseUpdateWithWhereUniqueNestedInput!]
+  upsert: [ExpenseUpsertWithWhereUniqueNestedInput!]
+}
+
+input ExpenseUpdateWithWhereUniqueNestedInput {
+  where: ExpenseWhereUniqueInput!
+  data: ExpenseUpdateDataInput!
+}
+
+input ExpenseUpsertWithWhereUniqueNestedInput {
+  where: ExpenseWhereUniqueInput!
+  update: ExpenseUpdateDataInput!
+  create: ExpenseCreateInput!
+}
+
+input ExpenseWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ExpenseWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ExpenseWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ExpenseWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values less than the given value."""
+  description_lt: String
+
+  """All values less than or equal the given value."""
+  description_lte: String
+
+  """All values greater than the given value."""
+  description_gt: String
+
+  """All values greater than or equal the given value."""
+  description_gte: String
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string."""
+  description_not_ends_with: String
+  note: String
+
+  """All values that are not equal to given value."""
+  note_not: String
+
+  """All values that are contained in given list."""
+  note_in: [String!]
+
+  """All values that are not contained in given list."""
+  note_not_in: [String!]
+
+  """All values less than the given value."""
+  note_lt: String
+
+  """All values less than or equal the given value."""
+  note_lte: String
+
+  """All values greater than the given value."""
+  note_gt: String
+
+  """All values greater than or equal the given value."""
+  note_gte: String
+
+  """All values containing the given string."""
+  note_contains: String
+
+  """All values not containing the given string."""
+  note_not_contains: String
+
+  """All values starting with the given string."""
+  note_starts_with: String
+
+  """All values not starting with the given string."""
+  note_not_starts_with: String
+
+  """All values ending with the given string."""
+  note_ends_with: String
+
+  """All values not ending with the given string."""
+  note_not_ends_with: String
+  count: Float
+
+  """All values that are not equal to given value."""
+  count_not: Float
+
+  """All values that are contained in given list."""
+  count_in: [Float!]
+
+  """All values that are not contained in given list."""
+  count_not_in: [Float!]
+
+  """All values less than the given value."""
+  count_lt: Float
+
+  """All values less than or equal the given value."""
+  count_lte: Float
+
+  """All values greater than the given value."""
+  count_gt: Float
+
+  """All values greater than or equal the given value."""
+  count_gte: Float
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+}
+
+input ExpenseWhereUniqueInput {
+  id: ID
+}
+
+"""
+The `Long` scalar type represents non-fractional signed whole numeric values.
+Long can represent values between -(2^63) and 2^63 - 1.
+"""
+scalar Long
+
+type Mutation {
+  createPost(data: PostCreateInput!): Post!
+  createUser(data: UserCreateInput!): User!
+  createBalance(data: BalanceCreateInput!): Balance!
+  createTotalBalance(data: TotalBalanceCreateInput!): TotalBalance!
+  createEarning(data: EarningCreateInput!): Earning!
+  createCurrentBalance(data: CurrentBalanceCreateInput!): CurrentBalance!
+  createExpense(data: ExpenseCreateInput!): Expense!
+  updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateBalance(data: BalanceUpdateInput!, where: BalanceWhereUniqueInput!): Balance
+  updateTotalBalance(data: TotalBalanceUpdateInput!, where: TotalBalanceWhereUniqueInput!): TotalBalance
+  updateEarning(data: EarningUpdateInput!, where: EarningWhereUniqueInput!): Earning
+  updateCurrentBalance(data: CurrentBalanceUpdateInput!, where: CurrentBalanceWhereUniqueInput!): CurrentBalance
+  updateExpense(data: ExpenseUpdateInput!, where: ExpenseWhereUniqueInput!): Expense
+  deletePost(where: PostWhereUniqueInput!): Post
+  deleteUser(where: UserWhereUniqueInput!): User
+  deleteBalance(where: BalanceWhereUniqueInput!): Balance
+  deleteTotalBalance(where: TotalBalanceWhereUniqueInput!): TotalBalance
+  deleteEarning(where: EarningWhereUniqueInput!): Earning
+  deleteCurrentBalance(where: CurrentBalanceWhereUniqueInput!): CurrentBalance
+  deleteExpense(where: ExpenseWhereUniqueInput!): Expense
+  upsertPost(where: PostWhereUniqueInput!, create: PostCreateInput!, update: PostUpdateInput!): Post!
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  upsertBalance(where: BalanceWhereUniqueInput!, create: BalanceCreateInput!, update: BalanceUpdateInput!): Balance!
+  upsertTotalBalance(where: TotalBalanceWhereUniqueInput!, create: TotalBalanceCreateInput!, update: TotalBalanceUpdateInput!): TotalBalance!
+  upsertEarning(where: EarningWhereUniqueInput!, create: EarningCreateInput!, update: EarningUpdateInput!): Earning!
+  upsertCurrentBalance(where: CurrentBalanceWhereUniqueInput!, create: CurrentBalanceCreateInput!, update: CurrentBalanceUpdateInput!): CurrentBalance!
+  upsertExpense(where: ExpenseWhereUniqueInput!, create: ExpenseCreateInput!, update: ExpenseUpdateInput!): Expense!
+  updateManyPosts(data: PostUpdateInput!, where: PostWhereInput): BatchPayload!
+  updateManyUsers(data: UserUpdateInput!, where: UserWhereInput): BatchPayload!
+  updateManyBalances(data: BalanceUpdateInput!, where: BalanceWhereInput): BatchPayload!
+  updateManyTotalBalances(data: TotalBalanceUpdateInput!, where: TotalBalanceWhereInput): BatchPayload!
+  updateManyEarnings(data: EarningUpdateInput!, where: EarningWhereInput): BatchPayload!
+  updateManyCurrentBalances(data: CurrentBalanceUpdateInput!, where: CurrentBalanceWhereInput): BatchPayload!
+  updateManyExpenses(data: ExpenseUpdateInput!, where: ExpenseWhereInput): BatchPayload!
+  deleteManyPosts(where: PostWhereInput): BatchPayload!
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
+  deleteManyBalances(where: BalanceWhereInput): BatchPayload!
+  deleteManyTotalBalances(where: TotalBalanceWhereInput): BatchPayload!
+  deleteManyEarnings(where: EarningWhereInput): BatchPayload!
+  deleteManyCurrentBalances(where: CurrentBalanceWhereInput): BatchPayload!
+  deleteManyExpenses(where: ExpenseWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+type Post implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  isPublished: Boolean!
+  title: String!
+  text: String!
+  author(where: UserWhereInput): User!
+}
+
+"""A connection to a list of items."""
+type PostConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [PostEdge]!
+  aggregate: AggregatePost!
+}
+
+input PostCreateInput {
+  isPublished: Boolean
+  title: String!
+  text: String!
+  author: UserCreateOneWithoutPostsInput!
+}
+
+input PostCreateManyWithoutAuthorInput {
+  create: [PostCreateWithoutAuthorInput!]
+  connect: [PostWhereUniqueInput!]
+}
+
+input PostCreateWithoutAuthorInput {
+  isPublished: Boolean
+  title: String!
+  text: String!
+}
+
+"""An edge in a connection."""
+type PostEdge {
+  """The item at the end of the edge."""
+  node: Post!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum PostOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  isPublished_ASC
+  isPublished_DESC
+  title_ASC
+  title_DESC
+  text_ASC
+  text_DESC
+}
+
+type PostPreviousValues {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  isPublished: Boolean!
+  title: String!
+  text: String!
+}
+
+type PostSubscriptionPayload {
+  mutation: MutationType!
+  node: Post
+  updatedFields: [String!]
+  previousValues: PostPreviousValues
+}
+
+input PostSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [PostSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [PostSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [PostSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: PostWhereInput
+}
+
+input PostUpdateInput {
+  isPublished: Boolean
+  title: String
+  text: String
+  author: UserUpdateOneWithoutPostsInput
+}
+
+input PostUpdateManyWithoutAuthorInput {
+  create: [PostCreateWithoutAuthorInput!]
+  connect: [PostWhereUniqueInput!]
+  disconnect: [PostWhereUniqueInput!]
+  delete: [PostWhereUniqueInput!]
+  update: [PostUpdateWithWhereUniqueWithoutAuthorInput!]
+  upsert: [PostUpsertWithWhereUniqueWithoutAuthorInput!]
+}
+
+input PostUpdateWithoutAuthorDataInput {
+  isPublished: Boolean
+  title: String
+  text: String
+}
+
+input PostUpdateWithWhereUniqueWithoutAuthorInput {
+  where: PostWhereUniqueInput!
+  data: PostUpdateWithoutAuthorDataInput!
+}
+
+input PostUpsertWithWhereUniqueWithoutAuthorInput {
+  where: PostWhereUniqueInput!
+  update: PostUpdateWithoutAuthorDataInput!
+  create: PostCreateWithoutAuthorInput!
+}
+
+input PostWhereInput {
+  """Logical AND on all given filters."""
+  AND: [PostWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [PostWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [PostWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+  isPublished: Boolean
+
+  """All values that are not equal to given value."""
+  isPublished_not: Boolean
+  title: String
+
+  """All values that are not equal to given value."""
+  title_not: String
+
+  """All values that are contained in given list."""
+  title_in: [String!]
+
+  """All values that are not contained in given list."""
+  title_not_in: [String!]
+
+  """All values less than the given value."""
+  title_lt: String
+
+  """All values less than or equal the given value."""
+  title_lte: String
+
+  """All values greater than the given value."""
+  title_gt: String
+
+  """All values greater than or equal the given value."""
+  title_gte: String
+
+  """All values containing the given string."""
+  title_contains: String
+
+  """All values not containing the given string."""
+  title_not_contains: String
+
+  """All values starting with the given string."""
+  title_starts_with: String
+
+  """All values not starting with the given string."""
+  title_not_starts_with: String
+
+  """All values ending with the given string."""
+  title_ends_with: String
+
+  """All values not ending with the given string."""
+  title_not_ends_with: String
+  text: String
+
+  """All values that are not equal to given value."""
+  text_not: String
+
+  """All values that are contained in given list."""
+  text_in: [String!]
+
+  """All values that are not contained in given list."""
+  text_not_in: [String!]
+
+  """All values less than the given value."""
+  text_lt: String
+
+  """All values less than or equal the given value."""
+  text_lte: String
+
+  """All values greater than the given value."""
+  text_gt: String
+
+  """All values greater than or equal the given value."""
+  text_gte: String
+
+  """All values containing the given string."""
+  text_contains: String
+
+  """All values not containing the given string."""
+  text_not_contains: String
+
+  """All values starting with the given string."""
+  text_starts_with: String
+
+  """All values not starting with the given string."""
+  text_not_starts_with: String
+
+  """All values ending with the given string."""
+  text_ends_with: String
+
+  """All values not ending with the given string."""
+  text_not_ends_with: String
+  author: UserWhereInput
+}
+
+input PostWhereUniqueInput {
+  id: ID
+}
+
+type Query {
+  posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post]!
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  balances(where: BalanceWhereInput, orderBy: BalanceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Balance]!
+  totalBalances(where: TotalBalanceWhereInput, orderBy: TotalBalanceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TotalBalance]!
+  earnings(where: EarningWhereInput, orderBy: EarningOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Earning]!
+  currentBalances(where: CurrentBalanceWhereInput, orderBy: CurrentBalanceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CurrentBalance]!
+  expenses(where: ExpenseWhereInput, orderBy: ExpenseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Expense]!
+  post(where: PostWhereUniqueInput!): Post
+  user(where: UserWhereUniqueInput!): User
+  balance(where: BalanceWhereUniqueInput!): Balance
+  totalBalance(where: TotalBalanceWhereUniqueInput!): TotalBalance
+  earning(where: EarningWhereUniqueInput!): Earning
+  currentBalance(where: CurrentBalanceWhereUniqueInput!): CurrentBalance
+  expense(where: ExpenseWhereUniqueInput!): Expense
+  postsConnection(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PostConnection!
+  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  balancesConnection(where: BalanceWhereInput, orderBy: BalanceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BalanceConnection!
+  totalBalancesConnection(where: TotalBalanceWhereInput, orderBy: TotalBalanceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TotalBalanceConnection!
+  earningsConnection(where: EarningWhereInput, orderBy: EarningOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): EarningConnection!
+  currentBalancesConnection(where: CurrentBalanceWhereInput, orderBy: CurrentBalanceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CurrentBalanceConnection!
+  expensesConnection(where: ExpenseWhereInput, orderBy: ExpenseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ExpenseConnection!
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+}
+
+type Subscription {
+  post(where: PostSubscriptionWhereInput): PostSubscriptionPayload
+  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+  balance(where: BalanceSubscriptionWhereInput): BalanceSubscriptionPayload
+  totalBalance(where: TotalBalanceSubscriptionWhereInput): TotalBalanceSubscriptionPayload
+  earning(where: EarningSubscriptionWhereInput): EarningSubscriptionPayload
+  currentBalance(where: CurrentBalanceSubscriptionWhereInput): CurrentBalanceSubscriptionPayload
+  expense(where: ExpenseSubscriptionWhereInput): ExpenseSubscriptionPayload
+}
+
+type TotalBalance implements Node {
+  id: ID!
+  count: Float!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""A connection to a list of items."""
+type TotalBalanceConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [TotalBalanceEdge]!
+  aggregate: AggregateTotalBalance!
+}
+
+input TotalBalanceCreateInput {
+  count: Float
+}
+
+input TotalBalanceCreateOneInput {
+  create: TotalBalanceCreateInput
+  connect: TotalBalanceWhereUniqueInput
+}
+
+"""An edge in a connection."""
+type TotalBalanceEdge {
+  """The item at the end of the edge."""
+  node: TotalBalance!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum TotalBalanceOrderByInput {
+  id_ASC
+  id_DESC
+  count_ASC
+  count_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type TotalBalancePreviousValues {
+  id: ID!
+  count: Float!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type TotalBalanceSubscriptionPayload {
+  mutation: MutationType!
+  node: TotalBalance
+  updatedFields: [String!]
+  previousValues: TotalBalancePreviousValues
+}
+
+input TotalBalanceSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [TotalBalanceSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [TotalBalanceSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [TotalBalanceSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: TotalBalanceWhereInput
+}
+
+input TotalBalanceUpdateDataInput {
+  count: Float
+}
+
+input TotalBalanceUpdateInput {
+  count: Float
+}
+
+input TotalBalanceUpdateOneInput {
+  create: TotalBalanceCreateInput
+  connect: TotalBalanceWhereUniqueInput
+  delete: Boolean
+  update: TotalBalanceUpdateDataInput
+  upsert: TotalBalanceUpsertNestedInput
+}
+
+input TotalBalanceUpsertNestedInput {
+  update: TotalBalanceUpdateDataInput!
+  create: TotalBalanceCreateInput!
+}
+
+input TotalBalanceWhereInput {
+  """Logical AND on all given filters."""
+  AND: [TotalBalanceWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [TotalBalanceWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [TotalBalanceWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  count: Float
+
+  """All values that are not equal to given value."""
+  count_not: Float
+
+  """All values that are contained in given list."""
+  count_in: [Float!]
+
+  """All values that are not contained in given list."""
+  count_not_in: [Float!]
+
+  """All values less than the given value."""
+  count_lt: Float
+
+  """All values less than or equal the given value."""
+  count_lte: Float
+
+  """All values greater than the given value."""
+  count_gt: Float
+
+  """All values greater than or equal the given value."""
+  count_gte: Float
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+}
+
+input TotalBalanceWhereUniqueInput {
+  id: ID
+}
+
+type User implements Node {
+  id: ID!
+  email: String!
+  password: String!
+  name: String!
+  posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post!]
+  balance(where: BalanceWhereInput): Balance
+}
+
+"""A connection to a list of items."""
+type UserConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [UserEdge]!
+  aggregate: AggregateUser!
+}
+
+input UserCreateInput {
+  email: String!
+  password: String!
+  name: String!
+  posts: PostCreateManyWithoutAuthorInput
+  balance: BalanceCreateOneWithoutOwnerInput
+}
+
+input UserCreateOneWithoutBalanceInput {
+  create: UserCreateWithoutBalanceInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutPostsInput {
+  create: UserCreateWithoutPostsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutBalanceInput {
+  email: String!
+  password: String!
+  name: String!
+  posts: PostCreateManyWithoutAuthorInput
+}
+
+input UserCreateWithoutPostsInput {
+  email: String!
+  password: String!
+  name: String!
+  balance: BalanceCreateOneWithoutOwnerInput
+}
+
+"""An edge in a connection."""
+type UserEdge {
+  """The item at the end of the edge."""
+  node: User!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum UserOrderByInput {
+  id_ASC
+  id_DESC
+  email_ASC
+  email_DESC
+  password_ASC
+  password_DESC
+  name_ASC
+  name_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type UserPreviousValues {
+  id: ID!
+  email: String!
+  password: String!
+  name: String!
+}
+
+type UserSubscriptionPayload {
+  mutation: MutationType!
+  node: User
+  updatedFields: [String!]
+  previousValues: UserPreviousValues
+}
+
+input UserSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [UserSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [UserSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [UserSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: UserWhereInput
+}
+
+input UserUpdateInput {
+  email: String
+  password: String
+  name: String
+  posts: PostUpdateManyWithoutAuthorInput
+  balance: BalanceUpdateOneWithoutOwnerInput
+}
+
+input UserUpdateOneWithoutBalanceInput {
+  create: UserCreateWithoutBalanceInput
+  connect: UserWhereUniqueInput
+  delete: Boolean
+  update: UserUpdateWithoutBalanceDataInput
+  upsert: UserUpsertWithoutBalanceInput
+}
+
+input UserUpdateOneWithoutPostsInput {
+  create: UserCreateWithoutPostsInput
+  connect: UserWhereUniqueInput
+  delete: Boolean
+  update: UserUpdateWithoutPostsDataInput
+  upsert: UserUpsertWithoutPostsInput
+}
+
+input UserUpdateWithoutBalanceDataInput {
+  email: String
+  password: String
+  name: String
+  posts: PostUpdateManyWithoutAuthorInput
+}
+
+input UserUpdateWithoutPostsDataInput {
+  email: String
+  password: String
+  name: String
+  balance: BalanceUpdateOneWithoutOwnerInput
+}
+
+input UserUpsertWithoutBalanceInput {
+  update: UserUpdateWithoutBalanceDataInput!
+  create: UserCreateWithoutBalanceInput!
+}
+
+input UserUpsertWithoutPostsInput {
+  update: UserUpdateWithoutPostsDataInput!
+  create: UserCreateWithoutPostsInput!
+}
+
+input UserWhereInput {
+  """Logical AND on all given filters."""
+  AND: [UserWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [UserWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [UserWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  email: String
+
+  """All values that are not equal to given value."""
+  email_not: String
+
+  """All values that are contained in given list."""
+  email_in: [String!]
+
+  """All values that are not contained in given list."""
+  email_not_in: [String!]
+
+  """All values less than the given value."""
+  email_lt: String
+
+  """All values less than or equal the given value."""
+  email_lte: String
+
+  """All values greater than the given value."""
+  email_gt: String
+
+  """All values greater than or equal the given value."""
+  email_gte: String
+
+  """All values containing the given string."""
+  email_contains: String
+
+  """All values not containing the given string."""
+  email_not_contains: String
+
+  """All values starting with the given string."""
+  email_starts_with: String
+
+  """All values not starting with the given string."""
+  email_not_starts_with: String
+
+  """All values ending with the given string."""
+  email_ends_with: String
+
+  """All values not ending with the given string."""
+  email_not_ends_with: String
+  password: String
+
+  """All values that are not equal to given value."""
+  password_not: String
+
+  """All values that are contained in given list."""
+  password_in: [String!]
+
+  """All values that are not contained in given list."""
+  password_not_in: [String!]
+
+  """All values less than the given value."""
+  password_lt: String
+
+  """All values less than or equal the given value."""
+  password_lte: String
+
+  """All values greater than the given value."""
+  password_gt: String
+
+  """All values greater than or equal the given value."""
+  password_gte: String
+
+  """All values containing the given string."""
+  password_contains: String
+
+  """All values not containing the given string."""
+  password_not_contains: String
+
+  """All values starting with the given string."""
+  password_starts_with: String
+
+  """All values not starting with the given string."""
+  password_not_starts_with: String
+
+  """All values ending with the given string."""
+  password_ends_with: String
+
+  """All values not ending with the given string."""
+  password_not_ends_with: String
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  posts_every: PostWhereInput
+  posts_some: PostWhereInput
+  posts_none: PostWhereInput
+  balance: BalanceWhereInput
+}
+
+input UserWhereUniqueInput {
+  id: ID
+  email: String
+}
