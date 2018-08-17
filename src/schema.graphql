@@ -1,4 +1,4 @@
-# import { Post, Balance} from "./generated/prisma.graphql"
+# import { Post, Balance, Earning} from "./generated/prisma.graphql"
 
 type Query {
   feed: [Post!]!
@@ -14,6 +14,7 @@ type Mutation {
   publish(id: ID!): Post!
   deletePost(id: ID!): Post!
   createBalance(current: Float!, total: Float!): Balance!
+  createEarning(balanceId: ID!, title: String!, description: String!, note: String, count: Float!): Earning!
 }
 
 type Subscription {

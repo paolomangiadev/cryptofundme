@@ -6,91 +6,91 @@ import { makePrismaBindingClass, BasePrismaOptions } from 'prisma-binding'
 export interface Query {
     posts: <T = Post[]>(args: { where?: PostWhereInput, orderBy?: PostOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     users: <T = User[]>(args: { where?: UserWhereInput, orderBy?: UserOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    balances: <T = Balance[]>(args: { where?: BalanceWhereInput, orderBy?: BalanceOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    currentBalances: <T = CurrentBalance[]>(args: { where?: CurrentBalanceWhereInput, orderBy?: CurrentBalanceOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     totalBalances: <T = TotalBalance[]>(args: { where?: TotalBalanceWhereInput, orderBy?: TotalBalanceOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     earnings: <T = Earning[]>(args: { where?: EarningWhereInput, orderBy?: EarningOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    currentBalances: <T = CurrentBalance[]>(args: { where?: CurrentBalanceWhereInput, orderBy?: CurrentBalanceOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     expenses: <T = Expense[]>(args: { where?: ExpenseWhereInput, orderBy?: ExpenseOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    balances: <T = Balance[]>(args: { where?: BalanceWhereInput, orderBy?: BalanceOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     post: <T = Post | null>(args: { where: PostWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     user: <T = User | null>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    balance: <T = Balance | null>(args: { where: BalanceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    currentBalance: <T = CurrentBalance | null>(args: { where: CurrentBalanceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     totalBalance: <T = TotalBalance | null>(args: { where: TotalBalanceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     earning: <T = Earning | null>(args: { where: EarningWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    currentBalance: <T = CurrentBalance | null>(args: { where: CurrentBalanceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     expense: <T = Expense | null>(args: { where: ExpenseWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    balance: <T = Balance | null>(args: { where: BalanceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     postsConnection: <T = PostConnection>(args: { where?: PostWhereInput, orderBy?: PostOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     usersConnection: <T = UserConnection>(args: { where?: UserWhereInput, orderBy?: UserOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    balancesConnection: <T = BalanceConnection>(args: { where?: BalanceWhereInput, orderBy?: BalanceOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    currentBalancesConnection: <T = CurrentBalanceConnection>(args: { where?: CurrentBalanceWhereInput, orderBy?: CurrentBalanceOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     totalBalancesConnection: <T = TotalBalanceConnection>(args: { where?: TotalBalanceWhereInput, orderBy?: TotalBalanceOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     earningsConnection: <T = EarningConnection>(args: { where?: EarningWhereInput, orderBy?: EarningOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    currentBalancesConnection: <T = CurrentBalanceConnection>(args: { where?: CurrentBalanceWhereInput, orderBy?: CurrentBalanceOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     expensesConnection: <T = ExpenseConnection>(args: { where?: ExpenseWhereInput, orderBy?: ExpenseOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    balancesConnection: <T = BalanceConnection>(args: { where?: BalanceWhereInput, orderBy?: BalanceOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     node: <T = Node | null>(args: { id: ID_Output }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> 
   }
 
 export interface Mutation {
     createPost: <T = Post>(args: { data: PostCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createUser: <T = User>(args: { data: UserCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    createBalance: <T = Balance>(args: { data: BalanceCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    createCurrentBalance: <T = CurrentBalance>(args: { data: CurrentBalanceCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createTotalBalance: <T = TotalBalance>(args: { data: TotalBalanceCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createEarning: <T = Earning>(args: { data: EarningCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    createCurrentBalance: <T = CurrentBalance>(args: { data: CurrentBalanceCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createExpense: <T = Expense>(args: { data: ExpenseCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    createBalance: <T = Balance>(args: { data: BalanceCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updatePost: <T = Post | null>(args: { data: PostUpdateInput, where: PostWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateUser: <T = User | null>(args: { data: UserUpdateInput, where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateBalance: <T = Balance | null>(args: { data: BalanceUpdateInput, where: BalanceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateCurrentBalance: <T = CurrentBalance | null>(args: { data: CurrentBalanceUpdateInput, where: CurrentBalanceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateTotalBalance: <T = TotalBalance | null>(args: { data: TotalBalanceUpdateInput, where: TotalBalanceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateEarning: <T = Earning | null>(args: { data: EarningUpdateInput, where: EarningWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateCurrentBalance: <T = CurrentBalance | null>(args: { data: CurrentBalanceUpdateInput, where: CurrentBalanceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateExpense: <T = Expense | null>(args: { data: ExpenseUpdateInput, where: ExpenseWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateBalance: <T = Balance | null>(args: { data: BalanceUpdateInput, where: BalanceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deletePost: <T = Post | null>(args: { where: PostWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteUser: <T = User | null>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteBalance: <T = Balance | null>(args: { where: BalanceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteCurrentBalance: <T = CurrentBalance | null>(args: { where: CurrentBalanceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteTotalBalance: <T = TotalBalance | null>(args: { where: TotalBalanceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteEarning: <T = Earning | null>(args: { where: EarningWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteCurrentBalance: <T = CurrentBalance | null>(args: { where: CurrentBalanceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteExpense: <T = Expense | null>(args: { where: ExpenseWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteBalance: <T = Balance | null>(args: { where: BalanceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertPost: <T = Post>(args: { where: PostWhereUniqueInput, create: PostCreateInput, update: PostUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertUser: <T = User>(args: { where: UserWhereUniqueInput, create: UserCreateInput, update: UserUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    upsertBalance: <T = Balance>(args: { where: BalanceWhereUniqueInput, create: BalanceCreateInput, update: BalanceUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    upsertCurrentBalance: <T = CurrentBalance>(args: { where: CurrentBalanceWhereUniqueInput, create: CurrentBalanceCreateInput, update: CurrentBalanceUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertTotalBalance: <T = TotalBalance>(args: { where: TotalBalanceWhereUniqueInput, create: TotalBalanceCreateInput, update: TotalBalanceUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertEarning: <T = Earning>(args: { where: EarningWhereUniqueInput, create: EarningCreateInput, update: EarningUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    upsertCurrentBalance: <T = CurrentBalance>(args: { where: CurrentBalanceWhereUniqueInput, create: CurrentBalanceCreateInput, update: CurrentBalanceUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertExpense: <T = Expense>(args: { where: ExpenseWhereUniqueInput, create: ExpenseCreateInput, update: ExpenseUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    upsertBalance: <T = Balance>(args: { where: BalanceWhereUniqueInput, create: BalanceCreateInput, update: BalanceUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyPosts: <T = BatchPayload>(args: { data: PostUpdateInput, where?: PostWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyUsers: <T = BatchPayload>(args: { data: UserUpdateInput, where?: UserWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyBalances: <T = BatchPayload>(args: { data: BalanceUpdateInput, where?: BalanceWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyCurrentBalances: <T = BatchPayload>(args: { data: CurrentBalanceUpdateInput, where?: CurrentBalanceWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyTotalBalances: <T = BatchPayload>(args: { data: TotalBalanceUpdateInput, where?: TotalBalanceWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyEarnings: <T = BatchPayload>(args: { data: EarningUpdateInput, where?: EarningWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyCurrentBalances: <T = BatchPayload>(args: { data: CurrentBalanceUpdateInput, where?: CurrentBalanceWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyExpenses: <T = BatchPayload>(args: { data: ExpenseUpdateInput, where?: ExpenseWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyBalances: <T = BatchPayload>(args: { data: BalanceUpdateInput, where?: BalanceWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyPosts: <T = BatchPayload>(args: { where?: PostWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyUsers: <T = BatchPayload>(args: { where?: UserWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyBalances: <T = BatchPayload>(args: { where?: BalanceWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyCurrentBalances: <T = BatchPayload>(args: { where?: CurrentBalanceWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyTotalBalances: <T = BatchPayload>(args: { where?: TotalBalanceWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyEarnings: <T = BatchPayload>(args: { where?: EarningWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyCurrentBalances: <T = BatchPayload>(args: { where?: CurrentBalanceWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyExpenses: <T = BatchPayload>(args: { where?: ExpenseWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> 
+    deleteManyExpenses: <T = BatchPayload>(args: { where?: ExpenseWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyBalances: <T = BatchPayload>(args: { where?: BalanceWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> 
   }
 
 export interface Subscription {
     post: <T = PostSubscriptionPayload | null>(args: { where?: PostSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> ,
     user: <T = UserSubscriptionPayload | null>(args: { where?: UserSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> ,
-    balance: <T = BalanceSubscriptionPayload | null>(args: { where?: BalanceSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> ,
+    currentBalance: <T = CurrentBalanceSubscriptionPayload | null>(args: { where?: CurrentBalanceSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> ,
     totalBalance: <T = TotalBalanceSubscriptionPayload | null>(args: { where?: TotalBalanceSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> ,
     earning: <T = EarningSubscriptionPayload | null>(args: { where?: EarningSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> ,
-    currentBalance: <T = CurrentBalanceSubscriptionPayload | null>(args: { where?: CurrentBalanceSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> ,
-    expense: <T = ExpenseSubscriptionPayload | null>(args: { where?: ExpenseSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> 
+    expense: <T = ExpenseSubscriptionPayload | null>(args: { where?: ExpenseSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> ,
+    balance: <T = BalanceSubscriptionPayload | null>(args: { where?: BalanceSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> 
   }
 
 export interface Exists {
   Post: (where?: PostWhereInput) => Promise<boolean>
   User: (where?: UserWhereInput) => Promise<boolean>
-  Balance: (where?: BalanceWhereInput) => Promise<boolean>
+  CurrentBalance: (where?: CurrentBalanceWhereInput) => Promise<boolean>
   TotalBalance: (where?: TotalBalanceWhereInput) => Promise<boolean>
   Earning: (where?: EarningWhereInput) => Promise<boolean>
-  CurrentBalance: (where?: CurrentBalanceWhereInput) => Promise<boolean>
   Expense: (where?: ExpenseWhereInput) => Promise<boolean>
+  Balance: (where?: BalanceWhereInput) => Promise<boolean>
 }
 
 export interface Prisma {
@@ -165,11 +165,26 @@ type BalanceConnection {
 }
 
 input BalanceCreateInput {
-  current: CurrentBalanceCreateOneInput!
-  total: TotalBalanceCreateOneInput!
-  earnings: EarningCreateManyInput
-  outgoings: ExpenseCreateManyInput
+  current: CurrentBalanceCreateOneWithoutBalanceInput!
+  total: TotalBalanceCreateOneWithoutBalanceInput!
+  earnings: EarningCreateManyWithoutBalanceInput
+  outgoings: ExpenseCreateManyWithoutBalanceInput
   owner: UserCreateOneWithoutBalanceInput!
+}
+
+input BalanceCreateOneWithoutCurrentInput {
+  create: BalanceCreateWithoutCurrentInput
+  connect: BalanceWhereUniqueInput
+}
+
+input BalanceCreateOneWithoutEarningsInput {
+  create: BalanceCreateWithoutEarningsInput
+  connect: BalanceWhereUniqueInput
+}
+
+input BalanceCreateOneWithoutOutgoingsInput {
+  create: BalanceCreateWithoutOutgoingsInput
+  connect: BalanceWhereUniqueInput
 }
 
 input BalanceCreateOneWithoutOwnerInput {
@@ -177,11 +192,44 @@ input BalanceCreateOneWithoutOwnerInput {
   connect: BalanceWhereUniqueInput
 }
 
+input BalanceCreateOneWithoutTotalInput {
+  create: BalanceCreateWithoutTotalInput
+  connect: BalanceWhereUniqueInput
+}
+
+input BalanceCreateWithoutCurrentInput {
+  total: TotalBalanceCreateOneWithoutBalanceInput!
+  earnings: EarningCreateManyWithoutBalanceInput
+  outgoings: ExpenseCreateManyWithoutBalanceInput
+  owner: UserCreateOneWithoutBalanceInput!
+}
+
+input BalanceCreateWithoutEarningsInput {
+  current: CurrentBalanceCreateOneWithoutBalanceInput!
+  total: TotalBalanceCreateOneWithoutBalanceInput!
+  outgoings: ExpenseCreateManyWithoutBalanceInput
+  owner: UserCreateOneWithoutBalanceInput!
+}
+
+input BalanceCreateWithoutOutgoingsInput {
+  current: CurrentBalanceCreateOneWithoutBalanceInput!
+  total: TotalBalanceCreateOneWithoutBalanceInput!
+  earnings: EarningCreateManyWithoutBalanceInput
+  owner: UserCreateOneWithoutBalanceInput!
+}
+
 input BalanceCreateWithoutOwnerInput {
-  current: CurrentBalanceCreateOneInput!
-  total: TotalBalanceCreateOneInput!
-  earnings: EarningCreateManyInput
-  outgoings: ExpenseCreateManyInput
+  current: CurrentBalanceCreateOneWithoutBalanceInput!
+  total: TotalBalanceCreateOneWithoutBalanceInput!
+  earnings: EarningCreateManyWithoutBalanceInput
+  outgoings: ExpenseCreateManyWithoutBalanceInput
+}
+
+input BalanceCreateWithoutTotalInput {
+  current: CurrentBalanceCreateOneWithoutBalanceInput!
+  earnings: EarningCreateManyWithoutBalanceInput
+  outgoings: ExpenseCreateManyWithoutBalanceInput
+  owner: UserCreateOneWithoutBalanceInput!
 }
 
 """An edge in a connection."""
@@ -248,11 +296,38 @@ input BalanceSubscriptionWhereInput {
 }
 
 input BalanceUpdateInput {
-  current: CurrentBalanceUpdateOneInput
-  total: TotalBalanceUpdateOneInput
-  earnings: EarningUpdateManyInput
-  outgoings: ExpenseUpdateManyInput
+  current: CurrentBalanceUpdateOneWithoutBalanceInput
+  total: TotalBalanceUpdateOneWithoutBalanceInput
+  earnings: EarningUpdateManyWithoutBalanceInput
+  outgoings: ExpenseUpdateManyWithoutBalanceInput
   owner: UserUpdateOneWithoutBalanceInput
+}
+
+input BalanceUpdateOneWithoutCurrentInput {
+  create: BalanceCreateWithoutCurrentInput
+  connect: BalanceWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: BalanceUpdateWithoutCurrentDataInput
+  upsert: BalanceUpsertWithoutCurrentInput
+}
+
+input BalanceUpdateOneWithoutEarningsInput {
+  create: BalanceCreateWithoutEarningsInput
+  connect: BalanceWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: BalanceUpdateWithoutEarningsDataInput
+  upsert: BalanceUpsertWithoutEarningsInput
+}
+
+input BalanceUpdateOneWithoutOutgoingsInput {
+  create: BalanceCreateWithoutOutgoingsInput
+  connect: BalanceWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: BalanceUpdateWithoutOutgoingsDataInput
+  upsert: BalanceUpsertWithoutOutgoingsInput
 }
 
 input BalanceUpdateOneWithoutOwnerInput {
@@ -264,16 +339,73 @@ input BalanceUpdateOneWithoutOwnerInput {
   upsert: BalanceUpsertWithoutOwnerInput
 }
 
+input BalanceUpdateOneWithoutTotalInput {
+  create: BalanceCreateWithoutTotalInput
+  connect: BalanceWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: BalanceUpdateWithoutTotalDataInput
+  upsert: BalanceUpsertWithoutTotalInput
+}
+
+input BalanceUpdateWithoutCurrentDataInput {
+  total: TotalBalanceUpdateOneWithoutBalanceInput
+  earnings: EarningUpdateManyWithoutBalanceInput
+  outgoings: ExpenseUpdateManyWithoutBalanceInput
+  owner: UserUpdateOneWithoutBalanceInput
+}
+
+input BalanceUpdateWithoutEarningsDataInput {
+  current: CurrentBalanceUpdateOneWithoutBalanceInput
+  total: TotalBalanceUpdateOneWithoutBalanceInput
+  outgoings: ExpenseUpdateManyWithoutBalanceInput
+  owner: UserUpdateOneWithoutBalanceInput
+}
+
+input BalanceUpdateWithoutOutgoingsDataInput {
+  current: CurrentBalanceUpdateOneWithoutBalanceInput
+  total: TotalBalanceUpdateOneWithoutBalanceInput
+  earnings: EarningUpdateManyWithoutBalanceInput
+  owner: UserUpdateOneWithoutBalanceInput
+}
+
 input BalanceUpdateWithoutOwnerDataInput {
-  current: CurrentBalanceUpdateOneInput
-  total: TotalBalanceUpdateOneInput
-  earnings: EarningUpdateManyInput
-  outgoings: ExpenseUpdateManyInput
+  current: CurrentBalanceUpdateOneWithoutBalanceInput
+  total: TotalBalanceUpdateOneWithoutBalanceInput
+  earnings: EarningUpdateManyWithoutBalanceInput
+  outgoings: ExpenseUpdateManyWithoutBalanceInput
+}
+
+input BalanceUpdateWithoutTotalDataInput {
+  current: CurrentBalanceUpdateOneWithoutBalanceInput
+  earnings: EarningUpdateManyWithoutBalanceInput
+  outgoings: ExpenseUpdateManyWithoutBalanceInput
+  owner: UserUpdateOneWithoutBalanceInput
+}
+
+input BalanceUpsertWithoutCurrentInput {
+  update: BalanceUpdateWithoutCurrentDataInput!
+  create: BalanceCreateWithoutCurrentInput!
+}
+
+input BalanceUpsertWithoutEarningsInput {
+  update: BalanceUpdateWithoutEarningsDataInput!
+  create: BalanceCreateWithoutEarningsInput!
+}
+
+input BalanceUpsertWithoutOutgoingsInput {
+  update: BalanceUpdateWithoutOutgoingsDataInput!
+  create: BalanceCreateWithoutOutgoingsInput!
 }
 
 input BalanceUpsertWithoutOwnerInput {
   update: BalanceUpdateWithoutOwnerDataInput!
   create: BalanceCreateWithoutOwnerInput!
+}
+
+input BalanceUpsertWithoutTotalInput {
+  update: BalanceUpdateWithoutTotalDataInput!
+  create: BalanceCreateWithoutTotalInput!
 }
 
 input BalanceWhereInput {
@@ -394,6 +526,7 @@ type CurrentBalance implements Node {
   count: Float!
   createdAt: DateTime!
   updatedAt: DateTime!
+  balance(where: BalanceWhereInput): Balance
 }
 
 """A connection to a list of items."""
@@ -408,11 +541,16 @@ type CurrentBalanceConnection {
 
 input CurrentBalanceCreateInput {
   count: Float
+  balance: BalanceCreateOneWithoutCurrentInput
 }
 
-input CurrentBalanceCreateOneInput {
-  create: CurrentBalanceCreateInput
+input CurrentBalanceCreateOneWithoutBalanceInput {
+  create: CurrentBalanceCreateWithoutBalanceInput
   connect: CurrentBalanceWhereUniqueInput
+}
+
+input CurrentBalanceCreateWithoutBalanceInput {
+  count: Float
 }
 
 """An edge in a connection."""
@@ -481,25 +619,26 @@ input CurrentBalanceSubscriptionWhereInput {
   node: CurrentBalanceWhereInput
 }
 
-input CurrentBalanceUpdateDataInput {
-  count: Float
-}
-
 input CurrentBalanceUpdateInput {
   count: Float
+  balance: BalanceUpdateOneWithoutCurrentInput
 }
 
-input CurrentBalanceUpdateOneInput {
-  create: CurrentBalanceCreateInput
+input CurrentBalanceUpdateOneWithoutBalanceInput {
+  create: CurrentBalanceCreateWithoutBalanceInput
   connect: CurrentBalanceWhereUniqueInput
   delete: Boolean
-  update: CurrentBalanceUpdateDataInput
-  upsert: CurrentBalanceUpsertNestedInput
+  update: CurrentBalanceUpdateWithoutBalanceDataInput
+  upsert: CurrentBalanceUpsertWithoutBalanceInput
 }
 
-input CurrentBalanceUpsertNestedInput {
-  update: CurrentBalanceUpdateDataInput!
-  create: CurrentBalanceCreateInput!
+input CurrentBalanceUpdateWithoutBalanceDataInput {
+  count: Float
+}
+
+input CurrentBalanceUpsertWithoutBalanceInput {
+  update: CurrentBalanceUpdateWithoutBalanceDataInput!
+  create: CurrentBalanceCreateWithoutBalanceInput!
 }
 
 input CurrentBalanceWhereInput {
@@ -617,6 +756,7 @@ input CurrentBalanceWhereInput {
 
   """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
+  balance: BalanceWhereInput
 }
 
 input CurrentBalanceWhereUniqueInput {
@@ -627,11 +767,13 @@ scalar DateTime
 
 type Earning implements Node {
   id: ID!
+  title: String!
   description: String!
-  note: String!
+  note: String
   count: Float!
   createdAt: DateTime!
   updatedAt: DateTime!
+  balance(where: BalanceWhereInput): Balance
 }
 
 """A connection to a list of items."""
@@ -645,14 +787,23 @@ type EarningConnection {
 }
 
 input EarningCreateInput {
+  title: String!
   description: String!
-  note: String!
+  note: String
   count: Float!
+  balance: BalanceCreateOneWithoutEarningsInput
 }
 
-input EarningCreateManyInput {
-  create: [EarningCreateInput!]
+input EarningCreateManyWithoutBalanceInput {
+  create: [EarningCreateWithoutBalanceInput!]
   connect: [EarningWhereUniqueInput!]
+}
+
+input EarningCreateWithoutBalanceInput {
+  title: String!
+  description: String!
+  note: String
+  count: Float!
 }
 
 """An edge in a connection."""
@@ -667,6 +818,8 @@ type EarningEdge {
 enum EarningOrderByInput {
   id_ASC
   id_DESC
+  title_ASC
+  title_DESC
   description_ASC
   description_DESC
   note_ASC
@@ -681,8 +834,9 @@ enum EarningOrderByInput {
 
 type EarningPreviousValues {
   id: ID!
+  title: String!
   description: String!
-  note: String!
+  note: String
   count: Float!
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -727,36 +881,39 @@ input EarningSubscriptionWhereInput {
   node: EarningWhereInput
 }
 
-input EarningUpdateDataInput {
-  description: String
-  note: String
-  count: Float
-}
-
 input EarningUpdateInput {
+  title: String
   description: String
   note: String
   count: Float
+  balance: BalanceUpdateOneWithoutEarningsInput
 }
 
-input EarningUpdateManyInput {
-  create: [EarningCreateInput!]
+input EarningUpdateManyWithoutBalanceInput {
+  create: [EarningCreateWithoutBalanceInput!]
   connect: [EarningWhereUniqueInput!]
   disconnect: [EarningWhereUniqueInput!]
   delete: [EarningWhereUniqueInput!]
-  update: [EarningUpdateWithWhereUniqueNestedInput!]
-  upsert: [EarningUpsertWithWhereUniqueNestedInput!]
+  update: [EarningUpdateWithWhereUniqueWithoutBalanceInput!]
+  upsert: [EarningUpsertWithWhereUniqueWithoutBalanceInput!]
 }
 
-input EarningUpdateWithWhereUniqueNestedInput {
-  where: EarningWhereUniqueInput!
-  data: EarningUpdateDataInput!
+input EarningUpdateWithoutBalanceDataInput {
+  title: String
+  description: String
+  note: String
+  count: Float
 }
 
-input EarningUpsertWithWhereUniqueNestedInput {
+input EarningUpdateWithWhereUniqueWithoutBalanceInput {
   where: EarningWhereUniqueInput!
-  update: EarningUpdateDataInput!
-  create: EarningCreateInput!
+  data: EarningUpdateWithoutBalanceDataInput!
+}
+
+input EarningUpsertWithWhereUniqueWithoutBalanceInput {
+  where: EarningWhereUniqueInput!
+  update: EarningUpdateWithoutBalanceDataInput!
+  create: EarningCreateWithoutBalanceInput!
 }
 
 input EarningWhereInput {
@@ -808,6 +965,46 @@ input EarningWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  title: String
+
+  """All values that are not equal to given value."""
+  title_not: String
+
+  """All values that are contained in given list."""
+  title_in: [String!]
+
+  """All values that are not contained in given list."""
+  title_not_in: [String!]
+
+  """All values less than the given value."""
+  title_lt: String
+
+  """All values less than or equal the given value."""
+  title_lte: String
+
+  """All values greater than the given value."""
+  title_gt: String
+
+  """All values greater than or equal the given value."""
+  title_gte: String
+
+  """All values containing the given string."""
+  title_contains: String
+
+  """All values not containing the given string."""
+  title_not_contains: String
+
+  """All values starting with the given string."""
+  title_starts_with: String
+
+  """All values not starting with the given string."""
+  title_not_starts_with: String
+
+  """All values ending with the given string."""
+  title_ends_with: String
+
+  """All values not ending with the given string."""
+  title_not_ends_with: String
   description: String
 
   """All values that are not equal to given value."""
@@ -954,6 +1151,7 @@ input EarningWhereInput {
 
   """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
+  balance: BalanceWhereInput
 }
 
 input EarningWhereUniqueInput {
@@ -962,11 +1160,13 @@ input EarningWhereUniqueInput {
 
 type Expense implements Node {
   id: ID!
+  title: String!
   description: String!
-  note: String!
+  note: String
   count: Float!
   createdAt: DateTime!
   updatedAt: DateTime!
+  balance(where: BalanceWhereInput): Balance
 }
 
 """A connection to a list of items."""
@@ -980,14 +1180,23 @@ type ExpenseConnection {
 }
 
 input ExpenseCreateInput {
+  title: String!
   description: String!
-  note: String!
+  note: String
   count: Float!
+  balance: BalanceCreateOneWithoutOutgoingsInput
 }
 
-input ExpenseCreateManyInput {
-  create: [ExpenseCreateInput!]
+input ExpenseCreateManyWithoutBalanceInput {
+  create: [ExpenseCreateWithoutBalanceInput!]
   connect: [ExpenseWhereUniqueInput!]
+}
+
+input ExpenseCreateWithoutBalanceInput {
+  title: String!
+  description: String!
+  note: String
+  count: Float!
 }
 
 """An edge in a connection."""
@@ -1002,6 +1211,8 @@ type ExpenseEdge {
 enum ExpenseOrderByInput {
   id_ASC
   id_DESC
+  title_ASC
+  title_DESC
   description_ASC
   description_DESC
   note_ASC
@@ -1016,8 +1227,9 @@ enum ExpenseOrderByInput {
 
 type ExpensePreviousValues {
   id: ID!
+  title: String!
   description: String!
-  note: String!
+  note: String
   count: Float!
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -1062,36 +1274,39 @@ input ExpenseSubscriptionWhereInput {
   node: ExpenseWhereInput
 }
 
-input ExpenseUpdateDataInput {
-  description: String
-  note: String
-  count: Float
-}
-
 input ExpenseUpdateInput {
+  title: String
   description: String
   note: String
   count: Float
+  balance: BalanceUpdateOneWithoutOutgoingsInput
 }
 
-input ExpenseUpdateManyInput {
-  create: [ExpenseCreateInput!]
+input ExpenseUpdateManyWithoutBalanceInput {
+  create: [ExpenseCreateWithoutBalanceInput!]
   connect: [ExpenseWhereUniqueInput!]
   disconnect: [ExpenseWhereUniqueInput!]
   delete: [ExpenseWhereUniqueInput!]
-  update: [ExpenseUpdateWithWhereUniqueNestedInput!]
-  upsert: [ExpenseUpsertWithWhereUniqueNestedInput!]
+  update: [ExpenseUpdateWithWhereUniqueWithoutBalanceInput!]
+  upsert: [ExpenseUpsertWithWhereUniqueWithoutBalanceInput!]
 }
 
-input ExpenseUpdateWithWhereUniqueNestedInput {
-  where: ExpenseWhereUniqueInput!
-  data: ExpenseUpdateDataInput!
+input ExpenseUpdateWithoutBalanceDataInput {
+  title: String
+  description: String
+  note: String
+  count: Float
 }
 
-input ExpenseUpsertWithWhereUniqueNestedInput {
+input ExpenseUpdateWithWhereUniqueWithoutBalanceInput {
   where: ExpenseWhereUniqueInput!
-  update: ExpenseUpdateDataInput!
-  create: ExpenseCreateInput!
+  data: ExpenseUpdateWithoutBalanceDataInput!
+}
+
+input ExpenseUpsertWithWhereUniqueWithoutBalanceInput {
+  where: ExpenseWhereUniqueInput!
+  update: ExpenseUpdateWithoutBalanceDataInput!
+  create: ExpenseCreateWithoutBalanceInput!
 }
 
 input ExpenseWhereInput {
@@ -1143,6 +1358,46 @@ input ExpenseWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  title: String
+
+  """All values that are not equal to given value."""
+  title_not: String
+
+  """All values that are contained in given list."""
+  title_in: [String!]
+
+  """All values that are not contained in given list."""
+  title_not_in: [String!]
+
+  """All values less than the given value."""
+  title_lt: String
+
+  """All values less than or equal the given value."""
+  title_lte: String
+
+  """All values greater than the given value."""
+  title_gt: String
+
+  """All values greater than or equal the given value."""
+  title_gte: String
+
+  """All values containing the given string."""
+  title_contains: String
+
+  """All values not containing the given string."""
+  title_not_contains: String
+
+  """All values starting with the given string."""
+  title_starts_with: String
+
+  """All values not starting with the given string."""
+  title_not_starts_with: String
+
+  """All values ending with the given string."""
+  title_ends_with: String
+
+  """All values not ending with the given string."""
+  title_not_ends_with: String
   description: String
 
   """All values that are not equal to given value."""
@@ -1289,6 +1544,7 @@ input ExpenseWhereInput {
 
   """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
+  balance: BalanceWhereInput
 }
 
 input ExpenseWhereUniqueInput {
@@ -1304,46 +1560,46 @@ scalar Long
 type Mutation {
   createPost(data: PostCreateInput!): Post!
   createUser(data: UserCreateInput!): User!
-  createBalance(data: BalanceCreateInput!): Balance!
+  createCurrentBalance(data: CurrentBalanceCreateInput!): CurrentBalance!
   createTotalBalance(data: TotalBalanceCreateInput!): TotalBalance!
   createEarning(data: EarningCreateInput!): Earning!
-  createCurrentBalance(data: CurrentBalanceCreateInput!): CurrentBalance!
   createExpense(data: ExpenseCreateInput!): Expense!
+  createBalance(data: BalanceCreateInput!): Balance!
   updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  updateBalance(data: BalanceUpdateInput!, where: BalanceWhereUniqueInput!): Balance
+  updateCurrentBalance(data: CurrentBalanceUpdateInput!, where: CurrentBalanceWhereUniqueInput!): CurrentBalance
   updateTotalBalance(data: TotalBalanceUpdateInput!, where: TotalBalanceWhereUniqueInput!): TotalBalance
   updateEarning(data: EarningUpdateInput!, where: EarningWhereUniqueInput!): Earning
-  updateCurrentBalance(data: CurrentBalanceUpdateInput!, where: CurrentBalanceWhereUniqueInput!): CurrentBalance
   updateExpense(data: ExpenseUpdateInput!, where: ExpenseWhereUniqueInput!): Expense
+  updateBalance(data: BalanceUpdateInput!, where: BalanceWhereUniqueInput!): Balance
   deletePost(where: PostWhereUniqueInput!): Post
   deleteUser(where: UserWhereUniqueInput!): User
-  deleteBalance(where: BalanceWhereUniqueInput!): Balance
+  deleteCurrentBalance(where: CurrentBalanceWhereUniqueInput!): CurrentBalance
   deleteTotalBalance(where: TotalBalanceWhereUniqueInput!): TotalBalance
   deleteEarning(where: EarningWhereUniqueInput!): Earning
-  deleteCurrentBalance(where: CurrentBalanceWhereUniqueInput!): CurrentBalance
   deleteExpense(where: ExpenseWhereUniqueInput!): Expense
+  deleteBalance(where: BalanceWhereUniqueInput!): Balance
   upsertPost(where: PostWhereUniqueInput!, create: PostCreateInput!, update: PostUpdateInput!): Post!
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
-  upsertBalance(where: BalanceWhereUniqueInput!, create: BalanceCreateInput!, update: BalanceUpdateInput!): Balance!
+  upsertCurrentBalance(where: CurrentBalanceWhereUniqueInput!, create: CurrentBalanceCreateInput!, update: CurrentBalanceUpdateInput!): CurrentBalance!
   upsertTotalBalance(where: TotalBalanceWhereUniqueInput!, create: TotalBalanceCreateInput!, update: TotalBalanceUpdateInput!): TotalBalance!
   upsertEarning(where: EarningWhereUniqueInput!, create: EarningCreateInput!, update: EarningUpdateInput!): Earning!
-  upsertCurrentBalance(where: CurrentBalanceWhereUniqueInput!, create: CurrentBalanceCreateInput!, update: CurrentBalanceUpdateInput!): CurrentBalance!
   upsertExpense(where: ExpenseWhereUniqueInput!, create: ExpenseCreateInput!, update: ExpenseUpdateInput!): Expense!
+  upsertBalance(where: BalanceWhereUniqueInput!, create: BalanceCreateInput!, update: BalanceUpdateInput!): Balance!
   updateManyPosts(data: PostUpdateInput!, where: PostWhereInput): BatchPayload!
   updateManyUsers(data: UserUpdateInput!, where: UserWhereInput): BatchPayload!
-  updateManyBalances(data: BalanceUpdateInput!, where: BalanceWhereInput): BatchPayload!
+  updateManyCurrentBalances(data: CurrentBalanceUpdateInput!, where: CurrentBalanceWhereInput): BatchPayload!
   updateManyTotalBalances(data: TotalBalanceUpdateInput!, where: TotalBalanceWhereInput): BatchPayload!
   updateManyEarnings(data: EarningUpdateInput!, where: EarningWhereInput): BatchPayload!
-  updateManyCurrentBalances(data: CurrentBalanceUpdateInput!, where: CurrentBalanceWhereInput): BatchPayload!
   updateManyExpenses(data: ExpenseUpdateInput!, where: ExpenseWhereInput): BatchPayload!
+  updateManyBalances(data: BalanceUpdateInput!, where: BalanceWhereInput): BatchPayload!
   deleteManyPosts(where: PostWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
-  deleteManyBalances(where: BalanceWhereInput): BatchPayload!
+  deleteManyCurrentBalances(where: CurrentBalanceWhereInput): BatchPayload!
   deleteManyTotalBalances(where: TotalBalanceWhereInput): BatchPayload!
   deleteManyEarnings(where: EarningWhereInput): BatchPayload!
-  deleteManyCurrentBalances(where: CurrentBalanceWhereInput): BatchPayload!
   deleteManyExpenses(where: ExpenseWhereInput): BatchPayload!
+  deleteManyBalances(where: BalanceWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -1703,25 +1959,25 @@ input PostWhereUniqueInput {
 type Query {
   posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post]!
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
-  balances(where: BalanceWhereInput, orderBy: BalanceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Balance]!
+  currentBalances(where: CurrentBalanceWhereInput, orderBy: CurrentBalanceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CurrentBalance]!
   totalBalances(where: TotalBalanceWhereInput, orderBy: TotalBalanceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TotalBalance]!
   earnings(where: EarningWhereInput, orderBy: EarningOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Earning]!
-  currentBalances(where: CurrentBalanceWhereInput, orderBy: CurrentBalanceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CurrentBalance]!
   expenses(where: ExpenseWhereInput, orderBy: ExpenseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Expense]!
+  balances(where: BalanceWhereInput, orderBy: BalanceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Balance]!
   post(where: PostWhereUniqueInput!): Post
   user(where: UserWhereUniqueInput!): User
-  balance(where: BalanceWhereUniqueInput!): Balance
+  currentBalance(where: CurrentBalanceWhereUniqueInput!): CurrentBalance
   totalBalance(where: TotalBalanceWhereUniqueInput!): TotalBalance
   earning(where: EarningWhereUniqueInput!): Earning
-  currentBalance(where: CurrentBalanceWhereUniqueInput!): CurrentBalance
   expense(where: ExpenseWhereUniqueInput!): Expense
+  balance(where: BalanceWhereUniqueInput!): Balance
   postsConnection(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PostConnection!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
-  balancesConnection(where: BalanceWhereInput, orderBy: BalanceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BalanceConnection!
+  currentBalancesConnection(where: CurrentBalanceWhereInput, orderBy: CurrentBalanceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CurrentBalanceConnection!
   totalBalancesConnection(where: TotalBalanceWhereInput, orderBy: TotalBalanceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TotalBalanceConnection!
   earningsConnection(where: EarningWhereInput, orderBy: EarningOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): EarningConnection!
-  currentBalancesConnection(where: CurrentBalanceWhereInput, orderBy: CurrentBalanceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CurrentBalanceConnection!
   expensesConnection(where: ExpenseWhereInput, orderBy: ExpenseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ExpenseConnection!
+  balancesConnection(where: BalanceWhereInput, orderBy: BalanceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BalanceConnection!
 
   """Fetches an object given its ID"""
   node(
@@ -1733,11 +1989,11 @@ type Query {
 type Subscription {
   post(where: PostSubscriptionWhereInput): PostSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
-  balance(where: BalanceSubscriptionWhereInput): BalanceSubscriptionPayload
+  currentBalance(where: CurrentBalanceSubscriptionWhereInput): CurrentBalanceSubscriptionPayload
   totalBalance(where: TotalBalanceSubscriptionWhereInput): TotalBalanceSubscriptionPayload
   earning(where: EarningSubscriptionWhereInput): EarningSubscriptionPayload
-  currentBalance(where: CurrentBalanceSubscriptionWhereInput): CurrentBalanceSubscriptionPayload
   expense(where: ExpenseSubscriptionWhereInput): ExpenseSubscriptionPayload
+  balance(where: BalanceSubscriptionWhereInput): BalanceSubscriptionPayload
 }
 
 type TotalBalance implements Node {
@@ -1745,6 +2001,7 @@ type TotalBalance implements Node {
   count: Float!
   createdAt: DateTime!
   updatedAt: DateTime!
+  balance(where: BalanceWhereInput): Balance
 }
 
 """A connection to a list of items."""
@@ -1759,11 +2016,16 @@ type TotalBalanceConnection {
 
 input TotalBalanceCreateInput {
   count: Float
+  balance: BalanceCreateOneWithoutTotalInput
 }
 
-input TotalBalanceCreateOneInput {
-  create: TotalBalanceCreateInput
+input TotalBalanceCreateOneWithoutBalanceInput {
+  create: TotalBalanceCreateWithoutBalanceInput
   connect: TotalBalanceWhereUniqueInput
+}
+
+input TotalBalanceCreateWithoutBalanceInput {
+  count: Float
 }
 
 """An edge in a connection."""
@@ -1832,25 +2094,26 @@ input TotalBalanceSubscriptionWhereInput {
   node: TotalBalanceWhereInput
 }
 
-input TotalBalanceUpdateDataInput {
-  count: Float
-}
-
 input TotalBalanceUpdateInput {
   count: Float
+  balance: BalanceUpdateOneWithoutTotalInput
 }
 
-input TotalBalanceUpdateOneInput {
-  create: TotalBalanceCreateInput
+input TotalBalanceUpdateOneWithoutBalanceInput {
+  create: TotalBalanceCreateWithoutBalanceInput
   connect: TotalBalanceWhereUniqueInput
   delete: Boolean
-  update: TotalBalanceUpdateDataInput
-  upsert: TotalBalanceUpsertNestedInput
+  update: TotalBalanceUpdateWithoutBalanceDataInput
+  upsert: TotalBalanceUpsertWithoutBalanceInput
 }
 
-input TotalBalanceUpsertNestedInput {
-  update: TotalBalanceUpdateDataInput!
-  create: TotalBalanceCreateInput!
+input TotalBalanceUpdateWithoutBalanceDataInput {
+  count: Float
+}
+
+input TotalBalanceUpsertWithoutBalanceInput {
+  update: TotalBalanceUpdateWithoutBalanceDataInput!
+  create: TotalBalanceCreateWithoutBalanceInput!
 }
 
 input TotalBalanceWhereInput {
@@ -1968,6 +2231,7 @@ input TotalBalanceWhereInput {
 
   """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
+  balance: BalanceWhereInput
 }
 
 input TotalBalanceWhereUniqueInput {
@@ -2345,6 +2609,8 @@ export type PostOrderByInput =   'id_ASC' |
 
 export type EarningOrderByInput =   'id_ASC' |
   'id_DESC' |
+  'title_ASC' |
+  'title_DESC' |
   'description_ASC' |
   'description_DESC' |
   'note_ASC' |
@@ -2358,6 +2624,8 @@ export type EarningOrderByInput =   'id_ASC' |
 
 export type ExpenseOrderByInput =   'id_ASC' |
   'id_DESC' |
+  'title_ASC' |
+  'title_DESC' |
   'description_ASC' |
   'description_DESC' |
   'note_ASC' |
@@ -2382,8 +2650,10 @@ export type UserOrderByInput =   'id_ASC' |
   'createdAt_ASC' |
   'createdAt_DESC'
 
-export type BalanceOrderByInput =   'id_ASC' |
+export type CurrentBalanceOrderByInput =   'id_ASC' |
   'id_DESC' |
+  'count_ASC' |
+  'count_DESC' |
   'createdAt_ASC' |
   'createdAt_DESC' |
   'updatedAt_ASC' |
@@ -2398,10 +2668,8 @@ export type TotalBalanceOrderByInput =   'id_ASC' |
   'updatedAt_ASC' |
   'updatedAt_DESC'
 
-export type CurrentBalanceOrderByInput =   'id_ASC' |
+export type BalanceOrderByInput =   'id_ASC' |
   'id_DESC' |
-  'count_ASC' |
-  'count_DESC' |
   'createdAt_ASC' |
   'createdAt_DESC' |
   'updatedAt_ASC' |
@@ -2411,10 +2679,9 @@ export type MutationType =   'CREATED' |
   'UPDATED' |
   'DELETED'
 
-export interface EarningCreateInput {
-  description: String
-  note: String
-  count: Float
+export interface BalanceCreateOneWithoutTotalInput {
+  create?: BalanceCreateWithoutTotalInput
+  connect?: BalanceWhereUniqueInput
 }
 
 export interface PostWhereInput {
@@ -2484,10 +2751,12 @@ export interface PostWhereInput {
   author?: UserWhereInput
 }
 
-export interface PostCreateWithoutAuthorInput {
-  isPublished?: Boolean
+export interface ExpenseCreateInput {
   title: String
-  text: String
+  description: String
+  note?: String
+  count: Float
+  balance?: BalanceCreateOneWithoutOutgoingsInput
 }
 
 export interface EarningWhereInput {
@@ -2508,6 +2777,20 @@ export interface EarningWhereInput {
   id_not_starts_with?: ID_Input
   id_ends_with?: ID_Input
   id_not_ends_with?: ID_Input
+  title?: String
+  title_not?: String
+  title_in?: String[] | String
+  title_not_in?: String[] | String
+  title_lt?: String
+  title_lte?: String
+  title_gt?: String
+  title_gte?: String
+  title_contains?: String
+  title_not_contains?: String
+  title_starts_with?: String
+  title_not_starts_with?: String
+  title_ends_with?: String
+  title_not_ends_with?: String
   description?: String
   description_not?: String
   description_in?: String[] | String
@@ -2560,14 +2843,12 @@ export interface EarningWhereInput {
   updatedAt_lte?: DateTime
   updatedAt_gt?: DateTime
   updatedAt_gte?: DateTime
+  balance?: BalanceWhereInput
 }
 
-export interface BalanceCreateInput {
-  current: CurrentBalanceCreateOneInput
-  total: TotalBalanceCreateOneInput
-  earnings?: EarningCreateManyInput
-  outgoings?: ExpenseCreateManyInput
-  owner: UserCreateOneWithoutBalanceInput
+export interface BalanceCreateOneWithoutOutgoingsInput {
+  create?: BalanceCreateWithoutOutgoingsInput
+  connect?: BalanceWhereUniqueInput
 }
 
 export interface TotalBalanceWhereInput {
@@ -2612,53 +2893,51 @@ export interface TotalBalanceWhereInput {
   updatedAt_lte?: DateTime
   updatedAt_gt?: DateTime
   updatedAt_gte?: DateTime
+  balance?: BalanceWhereInput
 }
 
-export interface ExpenseUpdateDataInput {
-  description?: String
-  note?: String
+export interface BalanceCreateWithoutOwnerInput {
+  current: CurrentBalanceCreateOneWithoutBalanceInput
+  total: TotalBalanceCreateOneWithoutBalanceInput
+  earnings?: EarningCreateManyWithoutBalanceInput
+  outgoings?: ExpenseCreateManyWithoutBalanceInput
+}
+
+export interface BalanceUpsertWithoutOwnerInput {
+  update: BalanceUpdateWithoutOwnerDataInput
+  create: BalanceCreateWithoutOwnerInput
+}
+
+export interface CurrentBalanceCreateOneWithoutBalanceInput {
+  create?: CurrentBalanceCreateWithoutBalanceInput
+  connect?: CurrentBalanceWhereUniqueInput
+}
+
+export interface BalanceCreateWithoutOutgoingsInput {
+  current: CurrentBalanceCreateOneWithoutBalanceInput
+  total: TotalBalanceCreateOneWithoutBalanceInput
+  earnings?: EarningCreateManyWithoutBalanceInput
+  owner: UserCreateOneWithoutBalanceInput
+}
+
+export interface CurrentBalanceCreateWithoutBalanceInput {
   count?: Float
 }
 
-export interface CurrentBalanceUpsertNestedInput {
-  update: CurrentBalanceUpdateDataInput
-  create: CurrentBalanceCreateInput
-}
-
-export interface ExpenseUpdateWithWhereUniqueNestedInput {
-  where: ExpenseWhereUniqueInput
-  data: ExpenseUpdateDataInput
-}
-
-export interface UserCreateOneWithoutBalanceInput {
-  create?: UserCreateWithoutBalanceInput
-  connect?: UserWhereUniqueInput
-}
-
-export interface ExpenseUpdateManyInput {
-  create?: ExpenseCreateInput[] | ExpenseCreateInput
-  connect?: ExpenseWhereUniqueInput[] | ExpenseWhereUniqueInput
-  disconnect?: ExpenseWhereUniqueInput[] | ExpenseWhereUniqueInput
-  delete?: ExpenseWhereUniqueInput[] | ExpenseWhereUniqueInput
-  update?: ExpenseUpdateWithWhereUniqueNestedInput[] | ExpenseUpdateWithWhereUniqueNestedInput
-  upsert?: ExpenseUpsertWithWhereUniqueNestedInput[] | ExpenseUpsertWithWhereUniqueNestedInput
-}
-
-export interface CurrentBalanceSubscriptionWhereInput {
-  AND?: CurrentBalanceSubscriptionWhereInput[] | CurrentBalanceSubscriptionWhereInput
-  OR?: CurrentBalanceSubscriptionWhereInput[] | CurrentBalanceSubscriptionWhereInput
-  NOT?: CurrentBalanceSubscriptionWhereInput[] | CurrentBalanceSubscriptionWhereInput
+export interface ExpenseSubscriptionWhereInput {
+  AND?: ExpenseSubscriptionWhereInput[] | ExpenseSubscriptionWhereInput
+  OR?: ExpenseSubscriptionWhereInput[] | ExpenseSubscriptionWhereInput
+  NOT?: ExpenseSubscriptionWhereInput[] | ExpenseSubscriptionWhereInput
   mutation_in?: MutationType[] | MutationType
   updatedFields_contains?: String
   updatedFields_contains_every?: String[] | String
   updatedFields_contains_some?: String[] | String
-  node?: CurrentBalanceWhereInput
+  node?: ExpenseWhereInput
 }
 
-export interface EarningUpsertWithWhereUniqueNestedInput {
-  where: EarningWhereUniqueInput
-  update: EarningUpdateDataInput
-  create: EarningCreateInput
+export interface TotalBalanceCreateOneWithoutBalanceInput {
+  create?: TotalBalanceCreateWithoutBalanceInput
+  connect?: TotalBalanceWhereUniqueInput
 }
 
 export interface TotalBalanceSubscriptionWhereInput {
@@ -2672,9 +2951,7 @@ export interface TotalBalanceSubscriptionWhereInput {
   node?: TotalBalanceWhereInput
 }
 
-export interface EarningUpdateDataInput {
-  description?: String
-  note?: String
+export interface TotalBalanceCreateWithoutBalanceInput {
   count?: Float
 }
 
@@ -2689,9 +2966,9 @@ export interface UserSubscriptionWhereInput {
   node?: UserWhereInput
 }
 
-export interface EarningUpdateWithWhereUniqueNestedInput {
-  where: EarningWhereUniqueInput
-  data: EarningUpdateDataInput
+export interface EarningCreateManyWithoutBalanceInput {
+  create?: EarningCreateWithoutBalanceInput[] | EarningCreateWithoutBalanceInput
+  connect?: EarningWhereUniqueInput[] | EarningWhereUniqueInput
 }
 
 export interface PostSubscriptionWhereInput {
@@ -2705,13 +2982,11 @@ export interface PostSubscriptionWhereInput {
   node?: PostWhereInput
 }
 
-export interface EarningUpdateManyInput {
-  create?: EarningCreateInput[] | EarningCreateInput
-  connect?: EarningWhereUniqueInput[] | EarningWhereUniqueInput
-  disconnect?: EarningWhereUniqueInput[] | EarningWhereUniqueInput
-  delete?: EarningWhereUniqueInput[] | EarningWhereUniqueInput
-  update?: EarningUpdateWithWhereUniqueNestedInput[] | EarningUpdateWithWhereUniqueNestedInput
-  upsert?: EarningUpsertWithWhereUniqueNestedInput[] | EarningUpsertWithWhereUniqueNestedInput
+export interface EarningCreateWithoutBalanceInput {
+  title: String
+  description: String
+  note?: String
+  count: Float
 }
 
 export interface UserWhereInput {
@@ -2780,205 +3055,26 @@ export interface UserWhereInput {
   balance?: BalanceWhereInput
 }
 
-export interface TotalBalanceUpsertNestedInput {
-  update: TotalBalanceUpdateDataInput
-  create: TotalBalanceCreateInput
+export interface ExpenseCreateManyWithoutBalanceInput {
+  create?: ExpenseCreateWithoutBalanceInput[] | ExpenseCreateWithoutBalanceInput
+  connect?: ExpenseWhereUniqueInput[] | ExpenseWhereUniqueInput
 }
 
-export interface CurrentBalanceUpdateInput {
-  count?: Float
+export interface BalanceUpsertWithoutOutgoingsInput {
+  update: BalanceUpdateWithoutOutgoingsDataInput
+  create: BalanceCreateWithoutOutgoingsInput
 }
 
-export interface PostCreateInput {
-  isPublished?: Boolean
+export interface ExpenseCreateWithoutBalanceInput {
   title: String
-  text: String
-  author: UserCreateOneWithoutPostsInput
+  description: String
+  note?: String
+  count: Float
 }
 
 export interface UserWhereUniqueInput {
   id?: ID_Input
   email?: String
-}
-
-export interface UserCreateOneWithoutPostsInput {
-  create?: UserCreateWithoutPostsInput
-  connect?: UserWhereUniqueInput
-}
-
-export interface TotalBalanceWhereUniqueInput {
-  id?: ID_Input
-}
-
-export interface UserCreateWithoutPostsInput {
-  email: String
-  password: String
-  name: String
-  balance?: BalanceCreateOneWithoutOwnerInput
-}
-
-export interface CurrentBalanceWhereUniqueInput {
-  id?: ID_Input
-}
-
-export interface BalanceCreateOneWithoutOwnerInput {
-  create?: BalanceCreateWithoutOwnerInput
-  connect?: BalanceWhereUniqueInput
-}
-
-export interface EarningUpdateInput {
-  description?: String
-  note?: String
-  count?: Float
-}
-
-export interface BalanceCreateWithoutOwnerInput {
-  current: CurrentBalanceCreateOneInput
-  total: TotalBalanceCreateOneInput
-  earnings?: EarningCreateManyInput
-  outgoings?: ExpenseCreateManyInput
-}
-
-export interface UserUpsertWithoutBalanceInput {
-  update: UserUpdateWithoutBalanceDataInput
-  create: UserCreateWithoutBalanceInput
-}
-
-export interface CurrentBalanceCreateOneInput {
-  create?: CurrentBalanceCreateInput
-  connect?: CurrentBalanceWhereUniqueInput
-}
-
-export interface UserUpdateOneWithoutBalanceInput {
-  create?: UserCreateWithoutBalanceInput
-  connect?: UserWhereUniqueInput
-  delete?: Boolean
-  update?: UserUpdateWithoutBalanceDataInput
-  upsert?: UserUpsertWithoutBalanceInput
-}
-
-export interface CurrentBalanceCreateInput {
-  count?: Float
-}
-
-export interface PostUpsertWithWhereUniqueWithoutAuthorInput {
-  where: PostWhereUniqueInput
-  update: PostUpdateWithoutAuthorDataInput
-  create: PostCreateWithoutAuthorInput
-}
-
-export interface TotalBalanceCreateOneInput {
-  create?: TotalBalanceCreateInput
-  connect?: TotalBalanceWhereUniqueInput
-}
-
-export interface PostUpdateWithWhereUniqueWithoutAuthorInput {
-  where: PostWhereUniqueInput
-  data: PostUpdateWithoutAuthorDataInput
-}
-
-export interface TotalBalanceCreateInput {
-  count?: Float
-}
-
-export interface UserUpdateInput {
-  email?: String
-  password?: String
-  name?: String
-  posts?: PostUpdateManyWithoutAuthorInput
-  balance?: BalanceUpdateOneWithoutOwnerInput
-}
-
-export interface EarningCreateManyInput {
-  create?: EarningCreateInput[] | EarningCreateInput
-  connect?: EarningWhereUniqueInput[] | EarningWhereUniqueInput
-}
-
-export interface BalanceUpsertWithoutOwnerInput {
-  update: BalanceUpdateWithoutOwnerDataInput
-  create: BalanceCreateWithoutOwnerInput
-}
-
-export interface TotalBalanceUpdateDataInput {
-  count?: Float
-}
-
-export interface ExpenseSubscriptionWhereInput {
-  AND?: ExpenseSubscriptionWhereInput[] | ExpenseSubscriptionWhereInput
-  OR?: ExpenseSubscriptionWhereInput[] | ExpenseSubscriptionWhereInput
-  NOT?: ExpenseSubscriptionWhereInput[] | ExpenseSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: ExpenseWhereInput
-}
-
-export interface ExpenseCreateManyInput {
-  create?: ExpenseCreateInput[] | ExpenseCreateInput
-  connect?: ExpenseWhereUniqueInput[] | ExpenseWhereUniqueInput
-}
-
-export interface BalanceSubscriptionWhereInput {
-  AND?: BalanceSubscriptionWhereInput[] | BalanceSubscriptionWhereInput
-  OR?: BalanceSubscriptionWhereInput[] | BalanceSubscriptionWhereInput
-  NOT?: BalanceSubscriptionWhereInput[] | BalanceSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: BalanceWhereInput
-}
-
-export interface ExpenseCreateInput {
-  description: String
-  note: String
-  count: Float
-}
-
-export interface BalanceWhereInput {
-  AND?: BalanceWhereInput[] | BalanceWhereInput
-  OR?: BalanceWhereInput[] | BalanceWhereInput
-  NOT?: BalanceWhereInput[] | BalanceWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  createdAt?: DateTime
-  createdAt_not?: DateTime
-  createdAt_in?: DateTime[] | DateTime
-  createdAt_not_in?: DateTime[] | DateTime
-  createdAt_lt?: DateTime
-  createdAt_lte?: DateTime
-  createdAt_gt?: DateTime
-  createdAt_gte?: DateTime
-  updatedAt?: DateTime
-  updatedAt_not?: DateTime
-  updatedAt_in?: DateTime[] | DateTime
-  updatedAt_not_in?: DateTime[] | DateTime
-  updatedAt_lt?: DateTime
-  updatedAt_lte?: DateTime
-  updatedAt_gt?: DateTime
-  updatedAt_gte?: DateTime
-  current?: CurrentBalanceWhereInput
-  total?: TotalBalanceWhereInput
-  earnings_every?: EarningWhereInput
-  earnings_some?: EarningWhereInput
-  earnings_none?: EarningWhereInput
-  outgoings_every?: ExpenseWhereInput
-  outgoings_some?: ExpenseWhereInput
-  outgoings_none?: ExpenseWhereInput
-  owner?: UserWhereInput
 }
 
 export interface UserCreateInput {
@@ -2989,7 +3085,7 @@ export interface UserCreateInput {
   balance?: BalanceCreateOneWithoutOwnerInput
 }
 
-export interface PostWhereUniqueInput {
+export interface TotalBalanceWhereUniqueInput {
   id?: ID_Input
 }
 
@@ -2998,8 +3094,165 @@ export interface PostCreateManyWithoutAuthorInput {
   connect?: PostWhereUniqueInput[] | PostWhereUniqueInput
 }
 
-export interface EarningWhereUniqueInput {
+export interface ExpenseWhereUniqueInput {
   id?: ID_Input
+}
+
+export interface PostCreateWithoutAuthorInput {
+  isPublished?: Boolean
+  title: String
+  text: String
+}
+
+export interface BalanceUpdateWithoutOutgoingsDataInput {
+  current?: CurrentBalanceUpdateOneWithoutBalanceInput
+  total?: TotalBalanceUpdateOneWithoutBalanceInput
+  earnings?: EarningUpdateManyWithoutBalanceInput
+  owner?: UserUpdateOneWithoutBalanceInput
+}
+
+export interface CurrentBalanceCreateInput {
+  count?: Float
+  balance?: BalanceCreateOneWithoutCurrentInput
+}
+
+export interface ExpenseUpdateInput {
+  title?: String
+  description?: String
+  note?: String
+  count?: Float
+  balance?: BalanceUpdateOneWithoutOutgoingsInput
+}
+
+export interface BalanceCreateOneWithoutCurrentInput {
+  create?: BalanceCreateWithoutCurrentInput
+  connect?: BalanceWhereUniqueInput
+}
+
+export interface BalanceUpdateWithoutEarningsDataInput {
+  current?: CurrentBalanceUpdateOneWithoutBalanceInput
+  total?: TotalBalanceUpdateOneWithoutBalanceInput
+  outgoings?: ExpenseUpdateManyWithoutBalanceInput
+  owner?: UserUpdateOneWithoutBalanceInput
+}
+
+export interface BalanceCreateWithoutCurrentInput {
+  total: TotalBalanceCreateOneWithoutBalanceInput
+  earnings?: EarningCreateManyWithoutBalanceInput
+  outgoings?: ExpenseCreateManyWithoutBalanceInput
+  owner: UserCreateOneWithoutBalanceInput
+}
+
+export interface EarningUpdateInput {
+  title?: String
+  description?: String
+  note?: String
+  count?: Float
+  balance?: BalanceUpdateOneWithoutEarningsInput
+}
+
+export interface UserCreateOneWithoutBalanceInput {
+  create?: UserCreateWithoutBalanceInput
+  connect?: UserWhereUniqueInput
+}
+
+export interface BalanceUpdateWithoutTotalDataInput {
+  current?: CurrentBalanceUpdateOneWithoutBalanceInput
+  earnings?: EarningUpdateManyWithoutBalanceInput
+  outgoings?: ExpenseUpdateManyWithoutBalanceInput
+  owner?: UserUpdateOneWithoutBalanceInput
+}
+
+export interface UserCreateWithoutBalanceInput {
+  email: String
+  password: String
+  name: String
+  posts?: PostCreateManyWithoutAuthorInput
+}
+
+export interface TotalBalanceUpdateInput {
+  count?: Float
+  balance?: BalanceUpdateOneWithoutTotalInput
+}
+
+export interface TotalBalanceCreateInput {
+  count?: Float
+  balance?: BalanceCreateOneWithoutTotalInput
+}
+
+export interface UserUpsertWithoutBalanceInput {
+  update: UserUpdateWithoutBalanceDataInput
+  create: UserCreateWithoutBalanceInput
+}
+
+export interface UserUpdateInput {
+  email?: String
+  password?: String
+  name?: String
+  posts?: PostUpdateManyWithoutAuthorInput
+  balance?: BalanceUpdateOneWithoutOwnerInput
+}
+
+export interface UserUpdateOneWithoutBalanceInput {
+  create?: UserCreateWithoutBalanceInput
+  connect?: UserWhereUniqueInput
+  delete?: Boolean
+  update?: UserUpdateWithoutBalanceDataInput
+  upsert?: UserUpsertWithoutBalanceInput
+}
+
+export interface BalanceCreateWithoutTotalInput {
+  current: CurrentBalanceCreateOneWithoutBalanceInput
+  earnings?: EarningCreateManyWithoutBalanceInput
+  outgoings?: ExpenseCreateManyWithoutBalanceInput
+  owner: UserCreateOneWithoutBalanceInput
+}
+
+export interface BalanceUpdateOneWithoutCurrentInput {
+  create?: BalanceCreateWithoutCurrentInput
+  connect?: BalanceWhereUniqueInput
+  disconnect?: Boolean
+  delete?: Boolean
+  update?: BalanceUpdateWithoutCurrentDataInput
+  upsert?: BalanceUpsertWithoutCurrentInput
+}
+
+export interface EarningCreateInput {
+  title: String
+  description: String
+  note?: String
+  count: Float
+  balance?: BalanceCreateOneWithoutEarningsInput
+}
+
+export interface PostUpsertWithWhereUniqueWithoutAuthorInput {
+  where: PostWhereUniqueInput
+  update: PostUpdateWithoutAuthorDataInput
+  create: PostCreateWithoutAuthorInput
+}
+
+export interface BalanceCreateOneWithoutEarningsInput {
+  create?: BalanceCreateWithoutEarningsInput
+  connect?: BalanceWhereUniqueInput
+}
+
+export interface PostUpdateWithWhereUniqueWithoutAuthorInput {
+  where: PostWhereUniqueInput
+  data: PostUpdateWithoutAuthorDataInput
+}
+
+export interface BalanceCreateWithoutEarningsInput {
+  current: CurrentBalanceCreateOneWithoutBalanceInput
+  total: TotalBalanceCreateOneWithoutBalanceInput
+  outgoings?: ExpenseCreateManyWithoutBalanceInput
+  owner: UserCreateOneWithoutBalanceInput
+}
+
+export interface PostCreateInput {
+  isPublished?: Boolean
+  title: String
+  text: String
+  author: UserCreateOneWithoutPostsInput
 }
 
 export interface ExpenseWhereInput {
@@ -3020,6 +3273,20 @@ export interface ExpenseWhereInput {
   id_not_starts_with?: ID_Input
   id_ends_with?: ID_Input
   id_not_ends_with?: ID_Input
+  title?: String
+  title_not?: String
+  title_in?: String[] | String
+  title_not_in?: String[] | String
+  title_lt?: String
+  title_lte?: String
+  title_gt?: String
+  title_gte?: String
+  title_contains?: String
+  title_not_contains?: String
+  title_starts_with?: String
+  title_not_starts_with?: String
+  title_ends_with?: String
+  title_not_ends_with?: String
   description?: String
   description_not?: String
   description_in?: String[] | String
@@ -3072,26 +3339,191 @@ export interface ExpenseWhereInput {
   updatedAt_lte?: DateTime
   updatedAt_gt?: DateTime
   updatedAt_gte?: DateTime
+  balance?: BalanceWhereInput
 }
 
-export interface TotalBalanceUpdateInput {
-  count?: Float
+export interface UserCreateWithoutPostsInput {
+  email: String
+  password: String
+  name: String
+  balance?: BalanceCreateOneWithoutOwnerInput
 }
 
-export interface TotalBalanceUpdateOneInput {
-  create?: TotalBalanceCreateInput
-  connect?: TotalBalanceWhereUniqueInput
+export interface UserUpsertWithoutPostsInput {
+  update: UserUpdateWithoutPostsDataInput
+  create: UserCreateWithoutPostsInput
+}
+
+export interface BalanceSubscriptionWhereInput {
+  AND?: BalanceSubscriptionWhereInput[] | BalanceSubscriptionWhereInput
+  OR?: BalanceSubscriptionWhereInput[] | BalanceSubscriptionWhereInput
+  NOT?: BalanceSubscriptionWhereInput[] | BalanceSubscriptionWhereInput
+  mutation_in?: MutationType[] | MutationType
+  updatedFields_contains?: String
+  updatedFields_contains_every?: String[] | String
+  updatedFields_contains_some?: String[] | String
+  node?: BalanceWhereInput
+}
+
+export interface CurrentBalanceSubscriptionWhereInput {
+  AND?: CurrentBalanceSubscriptionWhereInput[] | CurrentBalanceSubscriptionWhereInput
+  OR?: CurrentBalanceSubscriptionWhereInput[] | CurrentBalanceSubscriptionWhereInput
+  NOT?: CurrentBalanceSubscriptionWhereInput[] | CurrentBalanceSubscriptionWhereInput
+  mutation_in?: MutationType[] | MutationType
+  updatedFields_contains?: String
+  updatedFields_contains_every?: String[] | String
+  updatedFields_contains_some?: String[] | String
+  node?: CurrentBalanceWhereInput
+}
+
+export interface BalanceWhereInput {
+  AND?: BalanceWhereInput[] | BalanceWhereInput
+  OR?: BalanceWhereInput[] | BalanceWhereInput
+  NOT?: BalanceWhereInput[] | BalanceWhereInput
+  id?: ID_Input
+  id_not?: ID_Input
+  id_in?: ID_Input[] | ID_Input
+  id_not_in?: ID_Input[] | ID_Input
+  id_lt?: ID_Input
+  id_lte?: ID_Input
+  id_gt?: ID_Input
+  id_gte?: ID_Input
+  id_contains?: ID_Input
+  id_not_contains?: ID_Input
+  id_starts_with?: ID_Input
+  id_not_starts_with?: ID_Input
+  id_ends_with?: ID_Input
+  id_not_ends_with?: ID_Input
+  createdAt?: DateTime
+  createdAt_not?: DateTime
+  createdAt_in?: DateTime[] | DateTime
+  createdAt_not_in?: DateTime[] | DateTime
+  createdAt_lt?: DateTime
+  createdAt_lte?: DateTime
+  createdAt_gt?: DateTime
+  createdAt_gte?: DateTime
+  updatedAt?: DateTime
+  updatedAt_not?: DateTime
+  updatedAt_in?: DateTime[] | DateTime
+  updatedAt_not_in?: DateTime[] | DateTime
+  updatedAt_lt?: DateTime
+  updatedAt_lte?: DateTime
+  updatedAt_gt?: DateTime
+  updatedAt_gte?: DateTime
+  current?: CurrentBalanceWhereInput
+  total?: TotalBalanceWhereInput
+  earnings_every?: EarningWhereInput
+  earnings_some?: EarningWhereInput
+  earnings_none?: EarningWhereInput
+  outgoings_every?: ExpenseWhereInput
+  outgoings_some?: ExpenseWhereInput
+  outgoings_none?: ExpenseWhereInput
+  owner?: UserWhereInput
+}
+
+export interface BalanceCreateInput {
+  current: CurrentBalanceCreateOneWithoutBalanceInput
+  total: TotalBalanceCreateOneWithoutBalanceInput
+  earnings?: EarningCreateManyWithoutBalanceInput
+  outgoings?: ExpenseCreateManyWithoutBalanceInput
+  owner: UserCreateOneWithoutBalanceInput
+}
+
+export interface PostWhereUniqueInput {
+  id?: ID_Input
+}
+
+export interface PostUpdateInput {
+  isPublished?: Boolean
+  title?: String
+  text?: String
+  author?: UserUpdateOneWithoutPostsInput
+}
+
+export interface EarningWhereUniqueInput {
+  id?: ID_Input
+}
+
+export interface UserUpdateOneWithoutPostsInput {
+  create?: UserCreateWithoutPostsInput
+  connect?: UserWhereUniqueInput
   delete?: Boolean
-  update?: TotalBalanceUpdateDataInput
-  upsert?: TotalBalanceUpsertNestedInput
+  update?: UserUpdateWithoutPostsDataInput
+  upsert?: UserUpsertWithoutPostsInput
 }
 
-export interface BalanceUpdateInput {
-  current?: CurrentBalanceUpdateOneInput
-  total?: TotalBalanceUpdateOneInput
-  earnings?: EarningUpdateManyInput
-  outgoings?: ExpenseUpdateManyInput
-  owner?: UserUpdateOneWithoutBalanceInput
+export interface BalanceUpdateOneWithoutOutgoingsInput {
+  create?: BalanceCreateWithoutOutgoingsInput
+  connect?: BalanceWhereUniqueInput
+  disconnect?: Boolean
+  delete?: Boolean
+  update?: BalanceUpdateWithoutOutgoingsDataInput
+  upsert?: BalanceUpsertWithoutOutgoingsInput
+}
+
+export interface UserUpdateWithoutPostsDataInput {
+  email?: String
+  password?: String
+  name?: String
+  balance?: BalanceUpdateOneWithoutOwnerInput
+}
+
+export interface BalanceUpdateOneWithoutEarningsInput {
+  create?: BalanceCreateWithoutEarningsInput
+  connect?: BalanceWhereUniqueInput
+  disconnect?: Boolean
+  delete?: Boolean
+  update?: BalanceUpdateWithoutEarningsDataInput
+  upsert?: BalanceUpsertWithoutEarningsInput
+}
+
+export interface BalanceUpdateOneWithoutOwnerInput {
+  create?: BalanceCreateWithoutOwnerInput
+  connect?: BalanceWhereUniqueInput
+  disconnect?: Boolean
+  delete?: Boolean
+  update?: BalanceUpdateWithoutOwnerDataInput
+  upsert?: BalanceUpsertWithoutOwnerInput
+}
+
+export interface BalanceUpdateOneWithoutTotalInput {
+  create?: BalanceCreateWithoutTotalInput
+  connect?: BalanceWhereUniqueInput
+  disconnect?: Boolean
+  delete?: Boolean
+  update?: BalanceUpdateWithoutTotalDataInput
+  upsert?: BalanceUpsertWithoutTotalInput
+}
+
+export interface BalanceUpdateWithoutOwnerDataInput {
+  current?: CurrentBalanceUpdateOneWithoutBalanceInput
+  total?: TotalBalanceUpdateOneWithoutBalanceInput
+  earnings?: EarningUpdateManyWithoutBalanceInput
+  outgoings?: ExpenseUpdateManyWithoutBalanceInput
+}
+
+export interface UserUpdateWithoutBalanceDataInput {
+  email?: String
+  password?: String
+  name?: String
+  posts?: PostUpdateManyWithoutAuthorInput
+}
+
+export interface CurrentBalanceUpdateOneWithoutBalanceInput {
+  create?: CurrentBalanceCreateWithoutBalanceInput
+  connect?: CurrentBalanceWhereUniqueInput
+  delete?: Boolean
+  update?: CurrentBalanceUpdateWithoutBalanceDataInput
+  upsert?: CurrentBalanceUpsertWithoutBalanceInput
+}
+
+export interface CurrentBalanceUpdateInput {
+  count?: Float
+  balance?: BalanceUpdateOneWithoutCurrentInput
+}
+
+export interface CurrentBalanceUpdateWithoutBalanceDataInput {
+  count?: Float
 }
 
 export interface PostUpdateManyWithoutAuthorInput {
@@ -3103,17 +3535,22 @@ export interface PostUpdateManyWithoutAuthorInput {
   upsert?: PostUpsertWithWhereUniqueWithoutAuthorInput[] | PostUpsertWithWhereUniqueWithoutAuthorInput
 }
 
-export interface ExpenseUpsertWithWhereUniqueNestedInput {
-  where: ExpenseWhereUniqueInput
-  update: ExpenseUpdateDataInput
-  create: ExpenseCreateInput
+export interface CurrentBalanceUpsertWithoutBalanceInput {
+  update: CurrentBalanceUpdateWithoutBalanceDataInput
+  create: CurrentBalanceCreateWithoutBalanceInput
 }
 
-export interface UserCreateWithoutBalanceInput {
-  email: String
-  password: String
-  name: String
-  posts?: PostCreateManyWithoutAuthorInput
+export interface BalanceCreateOneWithoutOwnerInput {
+  create?: BalanceCreateWithoutOwnerInput
+  connect?: BalanceWhereUniqueInput
+}
+
+export interface TotalBalanceUpdateOneWithoutBalanceInput {
+  create?: TotalBalanceCreateWithoutBalanceInput
+  connect?: TotalBalanceWhereUniqueInput
+  delete?: Boolean
+  update?: TotalBalanceUpdateWithoutBalanceDataInput
+  upsert?: TotalBalanceUpsertWithoutBalanceInput
 }
 
 export interface CurrentBalanceWhereInput {
@@ -3158,72 +3595,57 @@ export interface CurrentBalanceWhereInput {
   updatedAt_lte?: DateTime
   updatedAt_gt?: DateTime
   updatedAt_gte?: DateTime
+  balance?: BalanceWhereInput
 }
 
-export interface PostUpdateInput {
-  isPublished?: Boolean
-  title?: String
-  text?: String
-  author?: UserUpdateOneWithoutPostsInput
-}
-
-export interface BalanceWhereUniqueInput {
-  id?: ID_Input
-}
-
-export interface UserUpdateOneWithoutPostsInput {
-  create?: UserCreateWithoutPostsInput
-  connect?: UserWhereUniqueInput
-  delete?: Boolean
-  update?: UserUpdateWithoutPostsDataInput
-  upsert?: UserUpsertWithoutPostsInput
-}
-
-export interface UserUpdateWithoutBalanceDataInput {
-  email?: String
-  password?: String
-  name?: String
-  posts?: PostUpdateManyWithoutAuthorInput
-}
-
-export interface UserUpdateWithoutPostsDataInput {
-  email?: String
-  password?: String
-  name?: String
-  balance?: BalanceUpdateOneWithoutOwnerInput
-}
-
-export interface UserUpsertWithoutPostsInput {
-  update: UserUpdateWithoutPostsDataInput
-  create: UserCreateWithoutPostsInput
-}
-
-export interface CurrentBalanceUpdateDataInput {
+export interface TotalBalanceUpdateWithoutBalanceDataInput {
   count?: Float
 }
 
-export interface CurrentBalanceUpdateOneInput {
-  create?: CurrentBalanceCreateInput
-  connect?: CurrentBalanceWhereUniqueInput
-  delete?: Boolean
-  update?: CurrentBalanceUpdateDataInput
-  upsert?: CurrentBalanceUpsertNestedInput
+export interface CurrentBalanceWhereUniqueInput {
+  id?: ID_Input
 }
 
-export interface BalanceUpdateWithoutOwnerDataInput {
-  current?: CurrentBalanceUpdateOneInput
-  total?: TotalBalanceUpdateOneInput
-  earnings?: EarningUpdateManyInput
-  outgoings?: ExpenseUpdateManyInput
+export interface TotalBalanceUpsertWithoutBalanceInput {
+  update: TotalBalanceUpdateWithoutBalanceDataInput
+  create: TotalBalanceCreateWithoutBalanceInput
 }
 
-export interface BalanceUpdateOneWithoutOwnerInput {
-  create?: BalanceCreateWithoutOwnerInput
-  connect?: BalanceWhereUniqueInput
-  disconnect?: Boolean
-  delete?: Boolean
-  update?: BalanceUpdateWithoutOwnerDataInput
-  upsert?: BalanceUpsertWithoutOwnerInput
+export interface BalanceUpsertWithoutEarningsInput {
+  update: BalanceUpdateWithoutEarningsDataInput
+  create: BalanceCreateWithoutEarningsInput
+}
+
+export interface EarningUpdateManyWithoutBalanceInput {
+  create?: EarningCreateWithoutBalanceInput[] | EarningCreateWithoutBalanceInput
+  connect?: EarningWhereUniqueInput[] | EarningWhereUniqueInput
+  disconnect?: EarningWhereUniqueInput[] | EarningWhereUniqueInput
+  delete?: EarningWhereUniqueInput[] | EarningWhereUniqueInput
+  update?: EarningUpdateWithWhereUniqueWithoutBalanceInput[] | EarningUpdateWithWhereUniqueWithoutBalanceInput
+  upsert?: EarningUpsertWithWhereUniqueWithoutBalanceInput[] | EarningUpsertWithWhereUniqueWithoutBalanceInput
+}
+
+export interface BalanceUpsertWithoutCurrentInput {
+  update: BalanceUpdateWithoutCurrentDataInput
+  create: BalanceCreateWithoutCurrentInput
+}
+
+export interface EarningUpdateWithWhereUniqueWithoutBalanceInput {
+  where: EarningWhereUniqueInput
+  data: EarningUpdateWithoutBalanceDataInput
+}
+
+export interface PostUpdateWithoutAuthorDataInput {
+  isPublished?: Boolean
+  title?: String
+  text?: String
+}
+
+export interface EarningUpdateWithoutBalanceDataInput {
+  title?: String
+  description?: String
+  note?: String
+  count?: Float
 }
 
 export interface EarningSubscriptionWhereInput {
@@ -3237,20 +3659,66 @@ export interface EarningSubscriptionWhereInput {
   node?: EarningWhereInput
 }
 
-export interface PostUpdateWithoutAuthorDataInput {
-  isPublished?: Boolean
-  title?: String
-  text?: String
+export interface EarningUpsertWithWhereUniqueWithoutBalanceInput {
+  where: EarningWhereUniqueInput
+  update: EarningUpdateWithoutBalanceDataInput
+  create: EarningCreateWithoutBalanceInput
 }
 
-export interface ExpenseWhereUniqueInput {
+export interface BalanceWhereUniqueInput {
   id?: ID_Input
 }
 
-export interface ExpenseUpdateInput {
+export interface ExpenseUpsertWithWhereUniqueWithoutBalanceInput {
+  where: ExpenseWhereUniqueInput
+  update: ExpenseUpdateWithoutBalanceDataInput
+  create: ExpenseCreateWithoutBalanceInput
+}
+
+export interface ExpenseUpdateWithoutBalanceDataInput {
+  title?: String
   description?: String
   note?: String
   count?: Float
+}
+
+export interface ExpenseUpdateWithWhereUniqueWithoutBalanceInput {
+  where: ExpenseWhereUniqueInput
+  data: ExpenseUpdateWithoutBalanceDataInput
+}
+
+export interface ExpenseUpdateManyWithoutBalanceInput {
+  create?: ExpenseCreateWithoutBalanceInput[] | ExpenseCreateWithoutBalanceInput
+  connect?: ExpenseWhereUniqueInput[] | ExpenseWhereUniqueInput
+  disconnect?: ExpenseWhereUniqueInput[] | ExpenseWhereUniqueInput
+  delete?: ExpenseWhereUniqueInput[] | ExpenseWhereUniqueInput
+  update?: ExpenseUpdateWithWhereUniqueWithoutBalanceInput[] | ExpenseUpdateWithWhereUniqueWithoutBalanceInput
+  upsert?: ExpenseUpsertWithWhereUniqueWithoutBalanceInput[] | ExpenseUpsertWithWhereUniqueWithoutBalanceInput
+}
+
+export interface BalanceUpsertWithoutTotalInput {
+  update: BalanceUpdateWithoutTotalDataInput
+  create: BalanceCreateWithoutTotalInput
+}
+
+export interface BalanceUpdateInput {
+  current?: CurrentBalanceUpdateOneWithoutBalanceInput
+  total?: TotalBalanceUpdateOneWithoutBalanceInput
+  earnings?: EarningUpdateManyWithoutBalanceInput
+  outgoings?: ExpenseUpdateManyWithoutBalanceInput
+  owner?: UserUpdateOneWithoutBalanceInput
+}
+
+export interface UserCreateOneWithoutPostsInput {
+  create?: UserCreateWithoutPostsInput
+  connect?: UserWhereUniqueInput
+}
+
+export interface BalanceUpdateWithoutCurrentDataInput {
+  total?: TotalBalanceUpdateOneWithoutBalanceInput
+  earnings?: EarningUpdateManyWithoutBalanceInput
+  outgoings?: ExpenseUpdateManyWithoutBalanceInput
+  owner?: UserUpdateOneWithoutBalanceInput
 }
 
 /*
@@ -3261,11 +3729,8 @@ export interface Node {
   id: ID_Output
 }
 
-export interface ExpensePreviousValues {
+export interface BalancePreviousValues {
   id: ID_Output
-  description: String
-  note: String
-  count: Float
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -3283,8 +3748,9 @@ export interface PageInfo {
 
 export interface EarningPreviousValues {
   id: ID_Output
+  title: String
   description: String
-  note: String
+  note?: String
   count: Float
   createdAt: DateTime
   updatedAt: DateTime
@@ -3310,19 +3776,19 @@ export interface Post extends Node {
   author: User
 }
 
-export interface ExpenseSubscriptionPayload {
+export interface BalanceSubscriptionPayload {
   mutation: MutationType
-  node?: Expense
+  node?: Balance
   updatedFields?: String[]
-  previousValues?: ExpensePreviousValues
+  previousValues?: BalancePreviousValues
 }
 
 /*
  * An edge in a connection.
 
  */
-export interface ExpenseEdge {
-  node: Expense
+export interface BalanceEdge {
+  node: Balance
   cursor: String
 }
 
@@ -3335,7 +3801,7 @@ export interface User extends Node {
   balance?: Balance
 }
 
-export interface AggregateCurrentBalance {
+export interface AggregateExpense {
   count: Int
 }
 
@@ -3347,14 +3813,17 @@ export interface BatchPayload {
  * A connection to a list of items.
 
  */
-export interface CurrentBalanceConnection {
+export interface ExpenseConnection {
   pageInfo: PageInfo
-  edges: CurrentBalanceEdge[]
-  aggregate: AggregateCurrentBalance
+  edges: ExpenseEdge[]
+  aggregate: AggregateExpense
 }
 
-export interface CurrentBalancePreviousValues {
+export interface ExpensePreviousValues {
   id: ID_Output
+  title: String
+  description: String
+  note?: String
   count: Float
   createdAt: DateTime
   updatedAt: DateTime
@@ -3371,22 +3840,24 @@ export interface EarningEdge {
 
 export interface Expense extends Node {
   id: ID_Output
+  title: String
   description: String
-  note: String
+  note?: String
   count: Float
   createdAt: DateTime
   updatedAt: DateTime
+  balance?: Balance
 }
 
 export interface AggregateTotalBalance {
   count: Int
 }
 
-export interface CurrentBalanceSubscriptionPayload {
+export interface ExpenseSubscriptionPayload {
   mutation: MutationType
-  node?: CurrentBalance
+  node?: Expense
   updatedFields?: String[]
-  previousValues?: CurrentBalancePreviousValues
+  previousValues?: ExpensePreviousValues
 }
 
 /*
@@ -3410,8 +3881,8 @@ export interface PostSubscriptionPayload {
  * An edge in a connection.
 
  */
-export interface BalanceEdge {
-  node: Balance
+export interface CurrentBalanceEdge {
+  node: CurrentBalance
   cursor: String
 }
 
@@ -3430,11 +3901,13 @@ export interface AggregateUser {
 
 export interface Earning extends Node {
   id: ID_Output
+  title: String
   description: String
-  note: String
+  note?: String
   count: Float
   createdAt: DateTime
   updatedAt: DateTime
+  balance?: Balance
 }
 
 /*
@@ -3474,10 +3947,10 @@ export interface UserPreviousValues {
  * A connection to a list of items.
 
  */
-export interface ExpenseConnection {
+export interface BalanceConnection {
   pageInfo: PageInfo
-  edges: ExpenseEdge[]
-  aggregate: AggregateExpense
+  edges: BalanceEdge[]
+  aggregate: AggregateBalance
 }
 
 export interface Balance extends Node {
@@ -3495,11 +3968,11 @@ export interface AggregateEarning {
   count: Int
 }
 
-export interface BalanceSubscriptionPayload {
+export interface CurrentBalanceSubscriptionPayload {
   mutation: MutationType
-  node?: Balance
+  node?: CurrentBalance
   updatedFields?: String[]
-  previousValues?: BalancePreviousValues
+  previousValues?: CurrentBalancePreviousValues
 }
 
 /*
@@ -3511,8 +3984,9 @@ export interface TotalBalanceEdge {
   cursor: String
 }
 
-export interface BalancePreviousValues {
+export interface CurrentBalancePreviousValues {
   id: ID_Output
+  count: Float
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -3521,10 +3995,10 @@ export interface BalancePreviousValues {
  * A connection to a list of items.
 
  */
-export interface BalanceConnection {
+export interface CurrentBalanceConnection {
   pageInfo: PageInfo
-  edges: BalanceEdge[]
-  aggregate: AggregateBalance
+  edges: CurrentBalanceEdge[]
+  aggregate: AggregateCurrentBalance
 }
 
 export interface TotalBalance extends Node {
@@ -3532,6 +4006,7 @@ export interface TotalBalance extends Node {
   count: Float
   createdAt: DateTime
   updatedAt: DateTime
+  balance?: Balance
 }
 
 export interface AggregatePost {
@@ -3542,8 +4017,8 @@ export interface AggregatePost {
  * An edge in a connection.
 
  */
-export interface CurrentBalanceEdge {
-  node: CurrentBalance
+export interface ExpenseEdge {
+  node: Expense
   cursor: String
 }
 
@@ -3559,6 +4034,7 @@ export interface CurrentBalance extends Node {
   count: Float
   createdAt: DateTime
   updatedAt: DateTime
+  balance?: Balance
 }
 
 export interface TotalBalancePreviousValues {
@@ -3585,7 +4061,7 @@ export interface EarningConnection {
   aggregate: AggregateEarning
 }
 
-export interface AggregateExpense {
+export interface AggregateBalance {
   count: Int
 }
 
@@ -3598,7 +4074,7 @@ export interface UserEdge {
   cursor: String
 }
 
-export interface AggregateBalance {
+export interface AggregateCurrentBalance {
   count: Int
 }
 

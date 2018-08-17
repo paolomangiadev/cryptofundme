@@ -22,6 +22,7 @@ type CurrentBalance {
   count: Float! @default(value: "0")
   createdAt: DateTime!
   updatedAt: DateTime!
+  balance: Balance
 }
 
 type TotalBalance {
@@ -29,24 +30,29 @@ type TotalBalance {
   count: Float! @default(value: "0")
   createdAt: DateTime!
   updatedAt: DateTime!
+  balance: Balance
 }
 
 type Earning {
   id: ID! @unique
+  title: String!
   description: String!
-  note: String!
+  note: String
   count: Float! 
   createdAt: DateTime!
   updatedAt: DateTime!
+  balance: Balance
 }
 
 type Expense {
   id: ID! @unique
+  title: String!
   description: String!
-  note: String!
+  note: String
   count: Float!
   createdAt: DateTime!
   updatedAt: DateTime!
+  balance: Balance
 }
 
 type Balance {
