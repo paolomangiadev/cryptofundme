@@ -14,7 +14,8 @@ type Mutation {
   publish(id: ID!): Post!
   deletePost(id: ID!): Post!
   createBalance(current: Float!, total: Float!): Balance!
-  createEarning(balanceId: ID!, title: String!, description: String!, note: String, count: Float!): Earning!
+  createEarning(id: ID!, title: String!, description: String!, note: String, count: Float!): Balance!
+  deleteEarning(id: ID!): Balance!
 }
 
 type Subscription {

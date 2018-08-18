@@ -20,10 +20,10 @@ export const balance = {
       newBalance,
     };
   },
-  async createEarning(parent, {balanceId, title, description, note, count}, ctx: Context, info) {
+  async createEarning(parent, { id, title, description, note, count }, ctx: Context, info) {
     const userId = getUserId(ctx);
     const where = {
-      id: balanceId,
+      id,
     };
     const balanceFound = await ctx.db.query.balance({ where }, `{ current { count } }`);
     if (!balanceFound) {
@@ -32,7 +32,7 @@ export const balance = {
     return ctx.db.mutation.updateBalance(
       {
         where: {
-          id: balanceId,
+          id,
         },
         data: {
           current: {
@@ -55,6 +55,44 @@ export const balance = {
           },
         },
       },
+      info,
+    );
+  },
+  async deleteEarning(parent, { id }, ctx: Context, info) {
+    const userId = getUserId(ctx);
+    const where = {
+      id,
+    };
+    const earningFound = await ctx.db.query.earning({ where }, `{ id, count, balance { id, current { count } } }`);
+    console.log(earningFound);
+    if (!earningFound) {
+      throw new Error(`Post not found or you're not the author`);
+    }
+
+    return ctx.db.mutation.updateBalance(
+      {
+        where: {
+          id: earningFound.balance.id,
+        },
+        data: {
+          current: {
+            update: {
+              count: earningFound.balance.current.count - earningFound.count,
+            },
+          },
+          total: {
+            update: {
+              count: earningFound.balance.current.count - earningFound.count,
+            },
+          },
+          earnings: {
+            delete: {
+              id: earningFound.id,
+            },
+          },
+        },
+      },
+      info,
     );
   },
 };
