@@ -25,11 +25,10 @@ export const balance = {
     const where = {
       id: balanceId,
     };
-    const balanceFound = await ctx.db.query.balance({ where: { id: balanceId } }, `{ current { count } }`);
+    const balanceFound = await ctx.db.query.balance({ where }, `{ current { count } }`);
     if (!balanceFound) {
       throw new Error(`Balance not found or you're not the owner`);
     }
-    console.log(info);
     return ctx.db.mutation.updateBalance(
       {
         where: {
